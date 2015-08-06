@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Vpaid</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
+    <string name="show_ad">Show Ad</string>
+
+    <string name="channel_id">68801</string>
+</resources>
