@@ -1,7 +1,11 @@
 package com.spotxchange.demo.vpaid;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,11 +37,11 @@ public class MainActivity extends Activity {
         });
 
         // Create the InterstitialAd and set the adUnitId (defined in values/strings.xml).
-        _adWebView = new WebView(this);
+        _adWebView = ((WebView) findViewById(R.id.interstitial));
         loadInterstitial();
 
         // Toasts the test ad message on the screen. Remove this after defining your own ad unit ID.
-        Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, TOAST_TEXT, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -73,15 +77,22 @@ public class MainActivity extends Activity {
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.KITKAT)
     private void loadInterstitial() {
         _showButton.setEnabled(false);
+        _adWebView.setVisibility(View.INVISIBLE);
         _adWebView.loadUrl("http://local.spotxcdn.com/adcallback");
-        _adWebView.setDownloadListener(new DownloadListener() {
+        _adWebView.getSettings().setJavaScriptEnabled(true);
+        WebView.setWebContentsDebuggingEnabled(true);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
-            public void onDownloadStart(String s, String s1, String s2, String s3, long l) {
+            public void run() {
                 _showButton.setEnabled(true);
+                //showInterstitial();
+
             }
-        });
+        }, 5000);
     }
 
     private void closeAd() {
