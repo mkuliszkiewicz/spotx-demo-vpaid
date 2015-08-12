@@ -13,6 +13,8 @@
 		258B19DD1B7659060065A317 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 258B19DC1B7659060065A317 /* Images.xcassets */; };
 		258B19E01B7659060065A317 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258B19DE1B7659060065A317 /* LaunchScreen.xib */; };
 		258B19EC1B7659070065A317 /* VPAID_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19EB1B7659060065A317 /* VPAID_DemoTests.swift */; };
+		25F4C9A71B7BAF2800ECD35B /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F4C9A61B7BAF2800ECD35B /* SWXMLHash.framework */; };
+		5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B1505355F86328599B32B3 /* Pods.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04AB6505A43AEC8230E7EFD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		258B19D01B7659060065A317 /* VPAID-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPAID-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258B19D41B7659060065A317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258B19D51B7659060065A317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,9 @@
 		258B19E51B7659060065A317 /* VPAID-DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VPAID-DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258B19EA1B7659060065A317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258B19EB1B7659060065A317 /* VPAID_DemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPAID_DemoTests.swift; sourceTree = "<group>"; };
+		25F4C9A61B7BAF2800ECD35B /* SWXMLHash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SWXMLHash.framework; path = "Pods/../build/Debug-iphoneos/SWXMLHash.framework"; sourceTree = "<group>"; };
+		37B1505355F86328599B32B3 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CDD04BC676E435C74C773BE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */,
+				25F4C9A71B7BAF2800ECD35B /* SWXMLHash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +70,8 @@
 				258B19D21B7659060065A317 /* VPAID-Demo */,
 				258B19E81B7659060065A317 /* VPAID-DemoTests */,
 				258B19D11B7659060065A317 /* Products */,
+				CCF90AD1E417F8C186B1834F /* Pods */,
+				6D46040A3E586A3FA431440A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +122,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6D46040A3E586A3FA431440A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				25F4C9A61B7BAF2800ECD35B /* SWXMLHash.framework */,
+				37B1505355F86328599B32B3 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCF90AD1E417F8C186B1834F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04AB6505A43AEC8230E7EFD5 /* Pods.debug.xcconfig */,
+				6CDD04BC676E435C74C773BE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +147,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 258B19EF1B7659070065A317 /* Build configuration list for PBXNativeTarget "VPAID-Demo" */;
 			buildPhases = (
+				AE1C717F1B17C0470E6D3E46 /* Check Pods Manifest.lock */,
 				258B19CC1B7659060065A317 /* Sources */,
 				258B19CD1B7659060065A317 /* Frameworks */,
 				258B19CE1B7659060065A317 /* Resources */,
+				9457F4CCC8E2063D9D75BC23 /* Embed Pods Frameworks */,
+				69073F5112467B41D4614DAF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +237,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		69073F5112467B41D4614DAF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9457F4CCC8E2063D9D75BC23 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1C717F1B17C0470E6D3E46 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		258B19CC1B7659060065A317 /* Sources */ = {
@@ -340,9 +419,15 @@
 		};
 		258B19F01B7659070065A317 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04AB6505A43AEC8230E7EFD5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "VPAID-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -350,9 +435,15 @@
 		};
 		258B19F11B7659070065A317 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CDD04BC676E435C74C773BE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = "VPAID-Demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -411,6 +502,7 @@
 				258B19F11B7659070065A317 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		258B19F21B7659070065A317 /* Build configuration list for PBXNativeTarget "VPAID-DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +511,7 @@
 				258B19F41B7659070065A317 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
