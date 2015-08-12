@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="PLACEHOLDER_htmlAdBrokerScript"><![CDATA[
+        <!DOCTYPE html>
+        <head>
+            <!--
+            <script src="http://search.spotxchange.com/ad_player/listing_type/5.js" type="text/javascript"></script>
+            -->
+            <script src="http://aka.spotxcdn.com/media/videos/js/ad/InstreamAdBroker_2015-07-07_14-37.debug.js" type="text/javascript"></script>
+        </head>
+        <body/>
+    ]]></string>
+    <string name="jsEnvironment"><![CDATA[
+    var oAdOS,
+        iContentWidth = window.innerWidth || 320,
+        iContentHeight = window.innerHeight || 240,
+        strViewMode = \'normal\',
+        oEnvVars = {
+        };
+    ]]></string>
+
+    <string name="PLACEHOLDER_jsAdParameters"><![CDATA[
+    var oCreativeData = {
+        \'ad_id\': \'1805679\',
+        \'title\': \'Ooyala MP4 3rd Party Smoketest\',
+        \'page_url\': \'http://search.spotxchange.com/click?_a=110681&_p=spotx&_z=1&_x=eNp1VNtu1DAQ9bfkgRekrMfXxKsKIbQgql64CgpCkeM4u2l3k9UmS7st_XYY51KhUvyQjCczx2fmjCNiSgkhbl25K8LTkoNVlhdcAHiZa1GAgiRVklNKgbiVrWrS7Ja2rtyYRAkInqSapUIRljjlnC7_iwAJlUqnRKdSpjQlkigtOUGAwAOAqgSDyOePBJSMGVcxJDwGsuq6rZnNWm93bhW326a7QTL10seu2cw2O1sVMxbTWSJ5Kl7YfddUddUdwbNgbtf2EMzt9nttN_7H0YfFu5OXrxYZAZ4IxVRCekTy_DlhjBNblhMVa8DcVYbPrRHmrjXcRHlVRPPWKBPRmGFR42ZrD82-i-aFoTHQR0tKCQASGAcmdcI0ZQAJyIQLKqQAClIxiUDSRO3W1_-eACkesc-x5ZkfS89K7x_iqAxx9_ehhrPPJydkJIxp-9bvsuV-oM2ZiVCl3DmU5AmVXuPqz4MxsWqz2l_3LhNB_8YmuKa5qnxWNBuciOBkiPu0OhOa3ReVr53PBiLURMgXaepAE2tYrpvcrqN5Zei8b3S1sWHHhdZUoEuHY_d1tztEQwBqNVpFCG2x4ggE5WNTdn5ZNfXk51qNpqu6w2gyLuSkX9N24fheAwCt0oEeBHqB_1BdhvK4aD75aRB-h0PV-V374Ea4wv-snA8ePs6Nv-keAljAC23KhrgMZzPrDlsfCmbz-57Epin8enBghomadvyKa7oQ19fXj_s9yE8g3GxuOdUuof9TeoilhMaSfESYrwMMeQpWy1SwIeF3vzCv3z16QP95sP_KgZSKG5D4u5jmk4VOYJ0lioojkfe6oyiF7exD43Af7mzQJTHRdHHDNp2anE2NQT0wPEe0dZiybGXb1TTzTpVU6jxRMhHIyQuQgsuyzKG0KS9Ef3cCsV_f3rwXp28W9IIt5MXlBZzeXt2eXR6vLm7d4fzLAs6-HK_OPy1vv316e_QHcD5-Qw%7E%7E\',
+        \'media\': {
+            \'ad_source\': \'third_party\',
+            \'syn\': {
+                \'video_uri_required\': 0
+            },
+            \'tracking\': {
+                \'video_valid_first_frame\': 1,
+                \'beacon\': [{
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://pm.w55c.net/ping_match.gif?ei=SPOTX&rurl=http%3A%2F%2Fsync.search.spotxchange.com%2Fpartner%3Fadv_id%3D6465%26uid%3D_wfivefivec_%26img%3D1\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://usersync.yashi.com/origin|spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://pixel.sitescout.com/dmp/pixelSync?network=SPOTXCHANGE\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://sync.mathtag.com/sync/img?mt_exid=30&redir=http%3A%2F%2Fsync.search.spotxchange.com%2Fpartner%3Fadv_id%3D6653%26uid%3D%5BMM_UUID%5D\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://cm.g.doubleclick.net/pixel?google_nid=spotxchange_dbm&google_cm&google_sc\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://log.adap.tv/spotx_sync\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://um.simpli.fi/spotx_match\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://pix04.revsci.net/J13421/a3/0/3/0.302?matchId=spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://track.eyeviewads.com/sync/spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://ck.provenpixel.com/sync?pid=spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'https://usersync.videoamp.com/usersync/spotx?USER_ID=$SPOTX_USER_ID\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://pixel.tapad.com/idsync/ex/receive?partner_id=SPOTX&partner_url=http%3A%2F%2Fsync.search.spotxchange.com%2Fpartner%3Fadv_id%3D6992%26uid%3D%24%7BTA_DEVICE_ID%7D&partner_device_id=$SPOTX_USER_ID\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://match.adsrvr.org/track/cmf/generic?ttd_pid=spotx&ttd_puid=${user_id}\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://p.rfihub.com/cm?in=1&pub=935\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://match.rundsp.com/redirect?ex=spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://x.bidswitch.net/sync?ssp=spotx\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://ib.adnxs.com/getuid?http://sync.search.spotxchange.com/partner?adv_id= 7715&uid=$UID\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://rtd.tubemogul.com/upi/pid/h0r58thg?redir=http%3A%2F%2Fsync.search.spotxchange.com%2Fpartner%3Fadv_id%3D6409%26uid%3D%24%7BUSER_ID%7D%26img%3D1\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://ad.turn.com/r/cs?pid=16\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://sync.tidaltv.com/Spotx.ashx\'
+                }, {
+                    \'type\': \'start\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1VNuO2zYQ5bfoIS8BZA4vuhmLok23AYL1brrZBEmKQqAkyqZjSYZEr9dI_e3tkJK8RS58kIbDuZyZM6QIKSWEFFqVXUt4WnNQkeIVFwBaFrGoIIIkjSSnlAIpN8q0pOvXqjXl7EUJCJ6kMUtFRFhSRmUZ1z8NAQmVUZySOJUypSmRJIolJxjAIQGgUYJG5P07ApEMGY9CSHgIZGPtPlssBq36chMO-84-IZp2rcOyaxZNr0y1YCFdJJKn4hd1sJ1pjb2CF07c79TJifv9X61q9N9X99dvb359dZ0T4ImIWJQQH5G8fEkY40TV9QxFZZB9NRlfqkxkX4eMZ0FhqmA5ZFEW0JBhUdNmr07dwQbLKqMh0G-WlBIAJDAOTMYJiykDSEAmXFAhBVCQEZMYSGbBsNft9xkgxRSHYmfKXE-l57XWFzsqnd357Gq4fX9zQybA6HYYdJ-vDyNszrIAWSrKEin5AUt_4PL5YHI0Q97qo1dlAfg_NqHsui9G51XX4Eg4JcO4P2ZnjqYOldFtqfMRCM0CxIswYwcTa1jvukLtgqXJ6NI32jTK7biIYypQFbu0h9b2p2A0QK4mqXKmA1YcgKB8akqv16ZrZz2Po0ksjT1NIuNCzvx1g3XpPQcAcZSO8KSD5_CP857b015PVujQWycn6I4zZk3jj7AV3JPGENqjqXSXP6qdqfLa9IPN616NdnNDkSNV5cNpsBq75UfOV9Xb4rJ1CModNtDmA0Yc23Q-jwdj43OcnPLZgbqZdKms7oeLGiut9KMptdPwKZF-shcD5uI5BvPRLsdrMxVtMrY8-8qbrtK7UeHL7YbpFNc4fv5DwD8wXqaEhpK8w8gfx9kgx-Px21khsUwFGx3-9Qv9nuM9f8Afj_L_fCCl4gkkvknzJWCuJkRc4-Tg3BV-uJD5Sll1aQHu24kTpHJ-HSZqpjbMJWJn0bzAaDs3yvlGDZv5YpVRTWVcJJFMBGLSAqTgsq4LqFXKK-EvqAP2z-fmw_bu4X67-n3N7l6_aW6318dPD2t--3rFPj18oavtb9tVc79ZsT-v_gPvG6AO&beacon_type=start&syn%5Btiming%5D=%24TIMING_DATA\'
+                }, {
+                    \'type\': \'complete\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1Uttu2zAM1bf4tUAg6uKLgj0UW1EMSNLd8pC-GLIsNyoc24jdLmmXX-9GyU4KbBgfbJE6Ig8PKWaUEkIKq03bEJ5VHHSseckFgJVFIkqIIc1iySmlQMxWu4a0-wfdOHN-BQQET7OEZSImLDWxMUn13xSQUhknGUkyKTOaEUniRHKCCTwTABqnCCLr70iLkr5rhwO5uiKMcaKr6gzQCtSrU3yulVCvveIqKlwZzXsVq4jOGJaanE4f26chmpeKzoD-ZVJKAJDAODCZpCyhDCAFmXJBhRRAQcZMYiKpor6zzb8VIMMST0XtTG4PKE_zYPPK2guOSo87nXwPq_Vigcypej2dz9KTB0D2Qct8OHbhbaoi0-662g5nt6v1cXC74DIV8VCdYd_PrrRt_qxrV-aV2_dDXu31iMO84P_IUZd5f-wHu4vmQbsg2X4oLq4nYWpnmyHvMWM0d4oi7_Git3pvtjlKYN4fUC-uLzXYfX8JY9elfXbG-gifCtnDcAEwn8-PNR9xue66qe_V_BSk3rWlrb0bWm37cIM2qhY-BMLmhjMldCZxXRKZCUbIWzCMvqPfP0B-o43nET-GMyoOICneT5NhnityqdonP_YC1ehx16JSD_rSGvrNpDWO6NvNl8X1x5t8knxqz9N3ivlxILzAbLXNcVZb3W89kmOLJq6oTIo0lqlATlaAFFxWVQGVzngpwgZ5Yr9WbAObx2t-f_sVVi8PdLn7zO5u18e7T8vD5mX9c8Xu3eax3K5-LD_8AV1jFZY%7E&beacon_type=complete\'
+                }, {
+                    \'type\': \'firstQuartile\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1Ul2L2zAQ1G_x60HQSlp_KPShtEfpkeTKNaH0yci2fBFN7GA7R8I1f73tSvYl0FI9CK12NDs7KzXjnDFWWFO2DZNZLcHERlZSAVgsElVBDGkWo-ScAyu3xjWs7Z5N48q3V4KBkmmWiEzFTKRlXJZJ_V8KSDnGScaSDDHjGUMWJygZEXglADxOCcQ2X0kWZ_2hHU7s7o4JIZmp6zeA0aBfnZZzo5V-7bXUUeGqaN7rWEd8JqjUFBzMuT0O0bzSfAb8r4WIAIAgJAhMUpFwAZACplJxhQo4YCyQiFBH_cE2_1aAjEoci50rc3sie5pnm9fWXnEcPe5y8T2sNosFKef69fJ2Ri8egNQHL_PhfAhvibWz5bHrXPPs45Sq7Mx5cPuQFjqSobygxl9cZdv8xexcldeu64e87syII2KY6EyV9-d-sPtoHswLnnVDcQ29inLnbDPkPTFGc6c5CR8TvTVduc3Jg_L2gHt3fanBdv31mtqu7Isrrb-RUyF7Gq4A4fn8XPMRl5vDYWp8Nb8Er_dtZXc-DK22fcjQGm0LG4PwdcOZMz5D-i8JZkow9issur2hbxuw37TG84gfrzOuToCc8tNohNdKWur26OdekBs9fbaoMoO5tkZxM3lNI3q6_7J4_-E-nyyf2vPynRZ-HAQviG1nc5rV1vRbj5TUYhnXHJMijTFVpMkqQCWxrguoTSYrFb6QF_ZzJT6Lx29LXK2ftsv1arv8-LB_XG9O38XmRDn1uP4By08PbrVevvsD0FAVVA%7E%7E&beacon_type=recurring&view_percent=25\'
+                }, {
+                    \'type\': \'midpoint\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1Ul1r2zAU1W_xayHo6sMfCnsYazdWmnRsLYW-GFmWE4FjB8spCV3--rYr2U1hY_dB6EpH5557rsSCUkJIZbXpO8KLhoNONa-5ALCyykQNKeRFKjmlFIjZateRftjozpnLKwKC50XGCpESlpvUmKz5LwXkVKZZQbJCyoIWRJI0k5wgQVACQNMcQeTxB8qixO_78UiurghjnOimeQNoBerVKb7USqhXr7hKKlcnS69SldAFw1Jzsten_jAmy1rRBdC_QkoJABIYByaznGWUAeQgcy6okAIoyJRJJJIq8Xvb_VsBCixxqFpnSntEe7qNLRtrLzgqA-58Dj2sH-_uUDlVr-e3vQziAVB99LIcT_v4FlkHaw7D4LpNyHOs0urT6HbxmqmEx_IMG39xte3LF926umzc4MeyGfSEQ2KY6XRd-pMf7S5ZRvOiZ8NYXdKgwrTOdmPpkTFZOkVR-HThrR7MtkQPzPsDGtwNpUY7-Msxtl3bF2dsOOFzIXscLwAW-MJcywlX6v1-bny9PEevd31t25DGVnsfbzAm2-JCIH7duKeELiT-l0wWghHyKwaevqPfFyC_Mab9hJ-OCyqOICnez6NhQStqafpDmHuFbnj8bEmtR31pDfNu9hpH9P3m293HTzflbPncXpDvFAvjQHiFbK0tcVZb7bcBybFFkzZUZlWeylygJitACi6bpoJGF7wW8QsFYT-fd5_d6uF2e_9wc1x9-d7eP32lz7u1W11vjuunFayun9vV0227vn788AfwsRZA&beacon_type=recurring&view_percent=50\'
+                }, {
+                    \'type\': \'thirdQuartile\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1Ustu2zAQ5LfoGsDg8qEHjR7axg1aJEYfSYH4IlAUFTOVJUOSAzuuf73tklIcoEX3QHDJ4ezsLMWMUkJIYbVpG8KzioOONS-5ALCySEQJMaRZLDmlFIhZa9eQtnvQjTMvrwQBwdMsYZmICUtNbExS_ZcCUirjJCNJJmVGMyJJnEhOkMArAaBxiiBy9w1lUdJv22FPLi4IY5zoqnoBaAXq6BSfayXUsVdcRYUro3mvYhXRGcNSU7LVh3Y3RPNS0RnQv0JKCQASGAcmk5QllAGkIFMuqJACKMiYSSSSKuq3tvm3AmRYYlfUzuR2j_Y0DzavrD3jqPS408n3sLy7vkblVB1PL3vpxQOg-uBlPhy24S2ydtbsus41Dz5PsUqtD4PbhGumIh7KM2z8yZW2zZ907cq8cl0_5FWnRxwSw0Sny7w_9IPdRPNgXvCsG4pz6lWY2tlmyHtkjOZOURQ-XvRWd2adowfm9QH17vpSg-368zG2XdonZ6w_4VMhux_OAOb5_FzzEZfr7XZqfDk_Ba83bWlrn4ZW2z7cYIy2hYVA-LphTwmdSfwvicwEI-RXCDx9Rb8uQH5jjPsRPx5nVOxBUryfRsO8VtRStTs_9wLd6PGzRaUe9Lk1zJvJaxzR18Xn67fvF_lk-dSel-8U8-NAeIFstc1xVmvdrz2SY4smrqhMijSWqUBNVoAUXFZVAZXOeCnCF_LCft5cvvuxul3I5WP5uLxc7FeXX-jq9sN6yb7Xq6uP9P7x_vnm-dNmdXX_5g_msxYe&beacon_type=recurring&view_percent=75\'
+                }, {
+                    \'type\': \'exception\',
+                    \'beacon_url\': \'http://search.spotxchange.com/exception?_a=110681&_p=spotx&_z=1&_x=eNp1U9tu3DYQ5bfooS8BtBxedOHCKILaBQp43SZpkNpFQVAU5aWjlYSV1l4j9be3Q0q7DtKUDxKHnDlzZs5QpJQSQtzRumHyfUd42XAwmeE1FwBOVrmoIYOizCSnlAKxW-M70u_vTeftV4GSgOBFmbNSZIQVNrM2b_4XBQoqs7wkeSllSUuMznLJCQIEPgA0K9CJfPxAIJMp41kKBU-BbKdpUKvV6MzebtNx6KcjEuruXWr73Wq3N75esZSuCslL8aM5TL3v_HQBP4Tt0JrnsB2GPzuzc39dvL_67frtT1eaAC9ExrKCRETy5g1hjBPTNCcqRoH64hVfGyXUl1FxlVS-TtajylRCU4ZFLcZgnvvDlKxrRVOg3ywpJQBIYByYzAuWUwZQgCy4oEIKoCAzJhFIqmQcXPffDFBiikPVeqvdUrpunDv7URn8Xl5CDTcfr6_JQhjDDqPb6_vDTJszlaBKlbUoyXdU-hlXzAdLoB91557ikUog_rEJtu8_e6frfodTEQ4Z4n5fnROaOdTeddbpmQhVCfI9cZWBa_CqnLF9p6fnIdaG9M-jFuwCu4BqTn4XrzEpj-1hyOnR167Xj6b1tW78fpx0szez34k6wplaj8_j5JBXFDdqup-qsxlY2BapTnpExGTtFcXGzhdziRo1sq8BNKgfUk1uP56PUZbaPXrrwglfErnjdHZgAS_0Ss9-Ggd0Kfxm_RJnYdfXrg1mLLUf4w2uuW3xQyA-5binhKaSfEDMP-b-k6enp2_1ILksBZsD_okL417xXj8Qr-f9VzFQUnEESfF-EY-FapBt0x_C5FbYrxGnL6nNZM7Fo90taqCIpxe4iLI0IBToFQuCoXuFaG0YF7014_Y0vDZrqMyrIpOFQE5OgBRcNk0FjSl5LeIjCMT-3rBfjre7d7D5tGG3v28fbh-u5N3D-93d5We5uWzbm0937a-Xb_nd5ebiX8kQeNM%7E&beacon_type=exception&exception%5Bid%5D=%24EXCEPTION_ID&exception%5Bdata%5D=%24EXCEPTION_DATA&exception%5Btrace%5D=%24EXCEPTION_TRACE&syn%5Btiming%5D=%24TIMING_DATA\'
+                }, {
+                    \'type\': \'skip\',
+                    \'beacon_url\': \'http://search.spotxchange.com/beacon?_a=110681&_p=spotx&_z=1&_x=eNp1U9uO2zYQ5bfooS8BZA5vkmgsgqB1AgQbp80FaTcoBIqibCa2JFhydt10vz0dUtKmyIUP0nA4Mzwz51CklBJCKmds1xJeNByMMrzmAsDJKhM1KMgLJTmlFIjdG9-S7rQzrbdLliIgeF5krBCKsNwqa7PmpyUgp1JlBckKKQtaEElUJjnBAgEJAFU5BpG3rwkomTKuUsh5CmQ_jr1erQZnTnafDn033iGadudS2x1Xx5Px9YqldJVLXojH5jx2vvXjFfwSzP5gLsHs-_etObq_r15tfr9-8uumJMBzoZjKSaxIHj0ijHFimmaBYjToz17ztdFCfx4010nl62Q9aKUTmjJsat705tKdx2Rda5oC_WZJKQFAAuPAZJazjDKAHGTOBRVSAAWpmMRCUidD79rvb4ACrzhXB29LN7deNs49xFEZ4u7vQw_bt9fXZAaMaefBncrdeYLNmU6QpcpapOQHLD3FFe-DOdEPZetuo0snEP84BNt1H70r6-6IkghOhnV_zM5SzZxr71rrygkI1QniRZhZgIk97A5dZQ7J2mu6joP2RxN2XGQZFejKwrXndjxdkikAuZqtOoQO2HECgvJ5KCe38127-HmmZtP68TKbjAu58NcNY7g-cgCQqWKCxwO8gH_SezleejdnDx99H8wcs1Fioz_GE5wEp0vX00xKJNUm66gm9NMglxNKcXSn4cGNIGr3yVsXPHxWm7sbHwJYqBeGW05xJSp6xuM1W99H6MeudofJEaF0w3yKa1JG_BCIbz_alNBUktdY-c-JNnJ7e_stjSSThWBTwpe4MO9rva8fiMeT_b8cKKi4A0nxfNYnCz0h4gZJRUlUkXcca21G8zAC3Ic3O495ebhhWyzjKpcWcbIYXmG1Q1BZuTfDftG8VQ2VWZUrmQvE5ARIwWXTVNCYgtcivp0A7N-_3r1gNx-e7m-ebcTNs1eH7Yc_Li_-2cDL356w7bvn-5dvnu-3bHO3PW6u_gMXs36f&beacon_type=skip\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://flash.quantserve.com/pixel.swf?media=ad&event=played&title=spotxchange&videoId=spotxchange&pageURL=&url=&publisherId=p%2D04HdaWoZepDyg&labels=110681\',
+                    \'unique\': \'No\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://pixel.quantserve.com/seg/r;a=p-04HdaWoZepDyg;redirect=http://search.spotxchange.com/track/bt/1/img?segs=!qcsegs\',
+                    \'unique\': \'Yes\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://tags.bluekai.com/site/363\',
+                    \'unique\': \'Yes\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://loadr.exelator.com/load/?p=104&g=420&j=0\',
+                    \'unique\': \'Yes\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://ad.crwdcntrl.net/5/pe=y/c=4914?http://search.spotxchange.com/track/bt/7/img?segs=${aud_ids}\',
+                    \'unique\': \'No\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://adadvisor.net/adscores/g.pixel?sid=9201737408\',
+                    \'unique\': \'Yes\'
+                }, {
+                    \'type\': \'initialization\',
+                    \'beacon_url\': \'http://b.scorecardresearch.com/b?c1=1&c2=6272977&c3=110681&cv=1.3&cj=1\',
+                    \'unique\': \'Yes\'
+                }]
+            },
+            \'video\': {
+                \'2\': {
+                    \'type\': \'video\',
+                    \'playtime\': 30,
+                    \'mime_type\': \'video/mp4\',
+                    \'vpi\': \'MP4\',
+                    \'source_uri\': \'http://cdn.spotxchange.com/website/integration_test/media/BBDR_Netflix_2011_30sec_1280x720.mp4\',
+                    \'transcoding\': \'high\',
+                    \'format\': \'MP4\',
+                    \'page_url\': \'http://search.spotxchange.com/click?_a=110681&_p=spotx&_z=1&_x=eNp1VG1v2zYQ5m_Rh30pIPNVomQEQ7Z2RYs4K9YFWzoMAiVSNhO9GBJdx-vy29ujRHlBlvKDfTzdHZ977oXHGCOEqsZW94hlNSMqUUwzTogRZco1SYjMEsEwxgRVO2U71A9b1dkKfbba9MXsihHhTGYpzXiCqKySqkrr78YhEoskzVCaCZHhDAmUpIIhCODREIITCUbo5iMiiYgpS2IiWUzQzrl9vlqNRg3VLh73vXsASN3WxFXfrtpBWb2iMV5JwTL-ozq43nbWXZAfvLhv1MmL-_1fnWrN3xe_vflwdfnzmwIRJnlCE4mmiOjVK0QpQ6quFygqJ_kXm7O1ynn-ZcxZHpVWR-sxT_IIxxSSCpe9OvUHF611jmOCnx0hBCFEEMoIFamkKaaESCIk45gLTjARCRUQSOTRuDfd_18gGTxxKIHywoTUi9qYsx0W3u7x0edwfXN1hQJgcDuMZii2hxk2o3kEVSqrCkryQpV-gTO9R4KjHYvOHCdVHpHpH0io-v7emkL3LfSFV1KI-3J1lmjqoK3pKlPMQHAeAV6AmXqYkMO26UvVRGub4_VEtG2VvzGeppiDKvXPHjo3nKLZAGoVJO1NR8g4IhyzQMpgtrbvFj1LkyBW1p2CSBkXS_360fnnpxoQkibZDA-gAz6ZR63RVhX_sZhQrKVUGa51JlMNHax5lWZpxjKYAFmFuHU_tMoFnJsPfKHDDaobq17bbhvA7Ox250UoWWtbU7jT3oT7NHCrdj95Axbf0Q5sJubziOGgr21jRvuPORM8sVZaeMyZUEMccjxa7XZPDAHrzgAE90TnSw0NMLrBqLY4DM3Tb2SpeAEtC-lOswJ67IdhgEFzZhjPagivzWdbGa9hYZbMgzsbUB_Pt04x2xUwr4EDm9P14wS67bVpZsWUeT-Gr3CWJXE8Hp_34DwSiPidxxSWppT0e90_22KEY4E-Qpg_5zDopbCpyDidHb5OB_ym27MfMn2e5Sc-JMP8gQhYocvMUs-E8F1z8EugnGYBekMrp87Ewd3vsVDzZZmFVgnkLcRAPcC8hGiNn7xip8bd0sFVUmORljIRkgMmw4ngTNR1SWqVMc2nfeKB_fvprrm_fn15ur27pde__9Rs6Du6ef3eXtP3d5u7S_zp7Tu2eXuLf_3j5uIbi5rRng%7E%7E\',
+                    \'media_id\': \'620d88a90fd987d890d4c797939c7f8c\',
+                    \'media_url\': \'http://cdn.spotxchange.com/website/integration_test/media/BBDR_Netflix_2011_30sec_1280x720.mp4\'
+                }
+            },
+            \'banners\': {
+                \'medium_rectangle\': {
+                    \'banner_type\': \'auto\',
+                    \'mime_type\': \'image/gif\',
+                    \'iab_imu\': \'medium_rectangle\',
+                    \'width\': 300,
+                    \'height\': 250,
+                    \'page_url\': \'http://search.spotxchange.com/click?_a=110681&_p=spotx&_z=1&_x=eNp1VNtu3DYQ5bfooS8BtBzedFkYRdI4hQMnLpqkWzsIBEqiVqx1WeiS9Tb1t7dDXbaF6_BhlxzNDM_MOUPhU0oIySqb3RMeFRy00jznAsDINBA5KAgjJTmlFEhWatuQttvrxmYk1U1jumSOpQQED6OARUIRFmYqy4Liu4kgpFIFEQkiKSMaEUlUIDnBBA4OAFUhOpFPHwgo6TOufAi5D6QchkO82fRGd1np94d2eEBMzd74WVtv6k7bfMN8ugklj8SPehxa29jhAn5w20OlT257OHxudG2-XPx6-cv1y58uEwI8FIqpkEwZyYsXhDFOdFGsUHQM8Tcb862ORfytj3nspTb3tn2sYo_6DItaDgd9asfB2-Yx9YE-WVJKAJDAODAZhCygDCAEGXJBhRRAQSomMZGMvf5gmv_fABFeMabY8sQspSeFMWc_Kp3f46Or4f2n62uyAMawsUey9uMMm7PYQ5bSLENKnmHpDa7pPlgCbZ805jiZYg-mf2xC1rb31iR5W6MwnJFh3ufZWbPpMbemyUwyA6Gxh3gRZuBgYg37qk115W1tTLdTo22t3YmLIKACTYG7dmyG7uTNDsjVssuda48VeyAoX5rSmb1tm9XOA7VsMzucli3jQq78tf3grp84AAhUNMMLHbww9mqTW53820TBAqWFCKM8K1JeqLAomE4DVBQNZFqkS9qi7Wo9LDB_vpp6i5zUtjbJcDqY5Yy17s1mb4sFwNHmQ7lE8bPGSmP35ZqMyVkY6F0OdZVgqw-VqU0znNs79czqNLH1OPmquY6xTjqTDchQZVZ6ZvISVF_mbSfZo506XXc4M4Pp-rMZs-Tmq82Ms_BlLMzDcHZgLp9TQTL7JTh6S7U2ZtvHqcS6zU01GzAi9tp--Yprnffj8fhUTrO6Cbj3C98tlTIRfk_Isy8l1JfkA6b5fU5DnksbyEiwOeDvaWHcdHryA9Pnef-fGIioeACJr-E6fsx1QjoFjG6e00nWqLlcD_rcODy7J8mRgBpb36VFFEvz1sYgH-ieYrbKDVFS6r5c1ZipgsogDZUMBWIyAqTgsihSKHTEczE9DQ7YX3ev31TvPl4db16_-uPd7kre1m_Lu90lv_14d3-z-83e_vnW3u3e1ze7q4t_AOzbxKU%7E\',
+                    \'media_id\': \'4276a4489dcfb3f68ff2ab7138075bfb\',
+                    \'filesize\': 420,
+                    \'type\': \'image\',
+                    \'format\': \'GIF\',
+                    \'banner_url\': \'http://search.spotxchange.com/banner?_a=110681&_p=spotx&_z=1&_x=eNqFVFlv3DYQ5m_RQ18CSBxeOhZGUbRJUMBr57DrukUhUBK1YqJjoaPrRerf3g51bAs3RfmwS45mht_M9w2FTykhJNNta3rC45KDVpoXXAAYmYWiAAVRrCSnlALJK21b0vUH3dp8i6IEBI_ikMVCERblKs_D8j9TQESlCmMSxlLGNCaSqFByggkcEgCqInQi9x8JKOkzrnyIuA-kGsdjEgSD0X1e-cOxG58QTXswft41QdNrWwTMp0EkeSy-1dPY2daOV_CN2x5rfXbb4_HXVjfmt6sPr99df_f965QAj4RiKiJzRvLqFWGME12WGxSdQPLFJnynE5F8GRKeeJktvN2QqMSjPsOi1sNRn7tp9HZFQn2gL5aUEgAkMA5MhhELKQOIQEZcUCEFUJCKSUwkE284mvbfN0CMV0xZbfPUrKWnpTEXPyqd3_Ozq-Hm_vqarIAxbBpMnx6mBTZniYcsZXmOlHyFpTe45vtgDbRD2prTbEo8mP-xCXnXfbYmLboGJeGMDPN-nZ0tm54Ka9rcpAsQmniIF2GGDibWcKi7TNfeziZ0NzfaNtqduAhDKtAUumunduzP3uKAXK27wrkOWLEHgvK1Kb052K7d7DxU6za343ndMi7kxl83jO76mQOAUMULvMjBixKvMYXV6d9NFCxUWogoLvIy46WKypLpLERF0VBmZbamLbu-0eMK8-2Pc2-Rk8Y2Jh3PR7OesdaDCQ62XAGcbDFWaxS_aKwy9lBtyZhchIHe1djUKbb6WJvGtOOlvXPPrM5S20yzr1rqmJq0N_mIDNVmo2chL0X15d5ulj3aqdN1jzMzmn64mDFLYX63uXEWvo6FeRovDszlcypIF78UR2-t1iZs9zyX2HSFqRcDRiReN6xfcW3zXtftadVT0S6j7mgIxmpqsiHoensIRMCC_yPDx84uY0FgfvPmPSXUl-Qjpv95kSs5nU4v5UtCGQu2BPw5L4ybTy9-YP687P8RAzEVTyDxmdzmkrkWSSeNyQ16NusdxVjoUV86imf3Vjl2UHzbg7WqZe3q1jEkCt0zzFa76UorPVSbTHNVUhlmkZKRQExGgBRclmUGpY55IeY3wwH7Y_9pf75pHum-eWNvHj58-uXhp2p_93jaP9yfbu8-y9sf3oubu_fs9u3j1V9fOcvp\',
+                    \'html_banner_url\': \'http://search.spotxchange.com/banner?_a=110681&_p=spotx&_z=1&_x=eNqFVNtu3DYQ5bfooS8BJA5vuiyMoqjdwIXXaRMErVsUAiVRu7RX0kKiurZTf3sy1GVbuCnKh11yNDM8M-cMRUgpIaTQbWt6wtOag1aaV1wAGFnEogIFSaokp5QCKffatqTrd7q15RpFCQiepDFLhSIsKVVZxvV_poCEShWnJE6lTGlKJFGx5AQTeCQAVCXoRD5-IKBkyLgKIeEhkL1zxyyKBqP7ch8Ox849Ipp2Z8Kya6Km17aKWEijRPJUfKtH19nWugv4xm-PB_3kt8fj761uzB8X769-uvnu-6ucAE-EYiohU0by5g1hjBNd1ysUnUH2yWZ8ozORfRoyngWFrYLNkKksoCHDopbDUT91ows2VUZDoK-WlBIAJDAOTMYJiykDSEAmXFAhBVCQiklMJLNgOJr23zdAileMxcGWuVlKz2tjzn5Uer-XF1_D7cebG7IAxrBxMH2-G2fYnGUBslSUJVLyFZZ-wDXdB0ugHfLWnCZTFsD0j00ou-7BmrzqGpSENzLM-3V21mx6rKxpS5PPQGgWIF6EGXuYWMPu0BX6EGxsRjdTo22j_YmLOKYCTbG_dmxd_xTMDsjVsqu864AVByAoX5rSm53t2tXOY7VsS-ueli3jQq78dYPz108cAMQqneElHl6SBY2prM7_bqJgsdJCJGlV1gWvVVLXTBcxKorGsqiLJW3d9Y12C8y311NvkZPGNiZ3T0eznLHWnYl2tl4AnGzl9ksUP2tsb-xuvyZjchYGeu9dc8ix1ceDaUzrzu2demZ1kdtmnHzVXMfY5L0pHTJ0MCs9M3k5qq8MNpPs0U69rnucGWf64WzGLJX505bGW_gyFubRnR2Yz-dVkM9-OY7eUq3N2OZlKrHpKnOYDRiRBd2wfMW1zrt-0IucqnaedM9CND89ERLmbBmJiEX_x0boWzQPBoHp1Zv2lNBQkg94w6-zYMnpdHotYBLLVLA54PO0MG46vfqB6fO8_0cMpFQ8gsSHcp1M5pskvThGP-rFpHiUY6WdPvcUz_618vyg_NYna9HL0te1Z0gVuheY7eDnK9_rYb8KtVQ1lXGRKJkIxGQESMFlXRdQ65RXYno1PLC_7p5_fLi93LJ3b69Pd_dXz9tmK-6an-m2-e3-9vL6eXv5vtne3z68--X64gv4rMy9\',
+                    \'html_tag\': \'&lt;a href=&quot;http://search.spotxchange.com/click?_a=110681&amp;_p=spotx&amp;_z=1&amp;_x=eNp1VNtu3DYQ5bfooS8BtBzedFkYRdI4hQMnLpqkWzsIBEqiVqx1WeiS9Tb1t7dDXbaF6_BhlxzNDM_MOUPhU0oIySqb3RMeFRy00jznAsDINBA5KAgjJTmlFEhWatuQttvrxmYk1U1jumSOpQQED6OARUIRFmYqy4Liu4kgpFIFEQkiKSMaEUlUIDnBBA4OAFUhOpFPHwgo6TOufAi5D6QchkO82fRGd1np94d2eEBMzd74WVtv6k7bfMN8ugklj8SPehxa29jhAn5w20OlT257OHxudG2-XPx6-cv1y58uEwI8FIqpkEwZyYsXhDFOdFGsUHQM8Tcb862ORfytj3nspTb3tn2sYo_6DItaDgd9asfB2-Yx9YE-WVJKAJDAODAZhCygDCAEGXJBhRRAQSomMZGMvf5gmv_fABFeMabY8sQspSeFMWc_Kp3f46Or4f2n62uyAMawsUey9uMMm7PYQ5bSLENKnmHpDa7pPlgCbZ805jiZYg-mf2xC1rb31iR5W6MwnJFh3ufZWbPpMbemyUwyA6Gxh3gRZuBgYg37qk115W1tTLdTo22t3YmLIKACTYG7dmyG7uTNDsjVssuda48VeyAoX5rSmb1tm9XOA7VsMzucli3jQq78tf3grp84AAhUNMMLHbww9mqTW53820TBAqWFCKM8K1JeqLAomE4DVBQNZFqkS9qi7Wo9LDB_vpp6i5zUtjbJcDqY5Yy17s1mb4sFwNHmQ7lE8bPGSmP35ZqMyVkY6F0OdZVgqw-VqU0znNs79czqNLH1OPmquY6xTjqTDchQZVZ6ZvISVF_mbSfZo506XXc4M4Pp-rMZs-Tmq82Ms_BlLMzDcHZgLp9TQTL7JTh6S7U2ZtvHqcS6zU01GzAi9tp--Yprnffj8fhUTrO6Cbj3C98tlTIRfk_Isy8l1JfkA6b5fU5DnksbyEiwOeDvaWHcdHryA9Pnef-fGIioeACJr-E6fsx1QjoFjG6e00nWqLlcD_rcODy7J8mRgBpb36VFFEvz1sYgH-ieYrbKDVFS6r5c1ZipgsogDZUMBWIyAqTgsihSKHTEczE9DQ7YX3ev31TvPl4db16_-uPd7kre1m_Lu90lv_14d3-z-83e_vnW3u3e1ze7q4t_AOzbxKU%7E&quot; border=&quot;0&quot; target=&quot;_blank&quot; title=&quot;Ooyala MP4 3rd Party Smoketest&quot;&gt;&lt;img style=&quot;border:0; width:300px; height:250px;&quot; src=&quot;http://search.spotxchange.com/banner?_a=110681&amp;_p=spotx&amp;_z=1&amp;_x=eNqFVFlv3DYQ5m_RQ18CSBxeOhZGUbRJUMBr57DrukUhUBK1YqJjoaPrRerf3g51bAs3RfmwS45mht_M9w2FTykhJNNta3rC45KDVpoXXAAYmYWiAAVRrCSnlALJK21b0vUH3dp8i6IEBI_ikMVCERblKs_D8j9TQESlCmMSxlLGNCaSqFByggkcEgCqInQi9x8JKOkzrnyIuA-kGsdjEgSD0X1e-cOxG58QTXswft41QdNrWwTMp0EkeSy-1dPY2daOV_CN2x5rfXbb4_HXVjfmt6sPr99df_f965QAj4RiKiJzRvLqFWGME12WGxSdQPLFJnynE5F8GRKeeJktvN2QqMSjPsOi1sNRn7tp9HZFQn2gL5aUEgAkMA5MhhELKQOIQEZcUCEFUJCKSUwkE284mvbfN0CMV0xZbfPUrKWnpTEXPyqd3_Ozq-Hm_vqarIAxbBpMnx6mBTZniYcsZXmOlHyFpTe45vtgDbRD2prTbEo8mP-xCXnXfbYmLboGJeGMDPN-nZ0tm54Ka9rcpAsQmniIF2GGDibWcKi7TNfeziZ0NzfaNtqduAhDKtAUumunduzP3uKAXK27wrkOWLEHgvK1Kb052K7d7DxU6za343ndMi7kxl83jO76mQOAUMULvMjBixKvMYXV6d9NFCxUWogoLvIy46WKypLpLERF0VBmZbamLbu-0eMK8-2Pc2-Rk8Y2Jh3PR7OesdaDCQ62XAGcbDFWaxS_aKwy9lBtyZhchIHe1djUKbb6WJvGtOOlvXPPrM5S20yzr1rqmJq0N_mIDNVmo2chL0X15d5ulj3aqdN1jzMzmn64mDFLYX63uXEWvo6FeRovDszlcypIF78UR2-t1iZs9zyX2HSFqRcDRiReN6xfcW3zXtftadVT0S6j7mgIxmpqsiHoensIRMCC_yPDx84uY0FgfvPmPSXUl-Qjpv95kSs5nU4v5UtCGQu2BPw5L4ybTy9-YP687P8RAzEVTyDxmdzmkrkWSSeNyQ16NusdxVjoUV86imf3Vjl2UHzbg7WqZe3q1jEkCt0zzFa76UorPVSbTHNVUhlmkZKRQExGgBRclmUGpY55IeY3wwH7Y_9pf75pHum-eWNvHj58-uXhp2p_93jaP9yfbu8-y9sf3oubu_fs9u3j1V9fOcvp&quot; alt=&quot;Ooyala MP4 3rd Party Smoketest&quot; /&gt;&lt;/a&gt;\',
+                    \'html_tag_internal\': true
+                }
+            }
+        },
+        \'ad_system\': [],
+        \'referrer\': \'http://search.spotxchange.com/mraid/2.0/85394?autoinit=1&autoplay=1&app[name]=REPLACE_\',
+        \'inventory_class\': null,
+        \'safety\': null,
+        \'client_playback\': {
+            \'ad_volume\': 0,
+            \'custom_skin\': 0,
+            \'playback_conf\': {
+                \'min_volume\': 0
+            }
+        },
+        \'skipit\': {
+            \'enabled\': 1
+        },
+        \'display\': {
+            \'ad_marker\': {
+                \'evidon\': {
+                    \'enabled\': 0
+                }
+            }
+        },
+        \'third_party_tracking\': {
+            \'providers\': {
+                \'moat\': {
+                    \'enabled\': 0
+                }
+            }
+        },
+        \'channel_id\': \'110681\'
+    };
+    ]]></string>
+    <string name="jsGetVPAIDAd"><![CDATA[
+    if(document.readyState == \'complete\')
+    {
+        window.oAdOS = getVPAIDAd();
+    }
+    else
+    {
+        window.onload = function()
+        {
+            window.oAdOS = getVPAIDAd();
+        }
+    };
+    ]]></string>
+    <string name="jsInitAd"><![CDATA[
+    window.oAdOS.initAd(
+        iContentWidth,
+        iContentHeight,
+        oEnvVars.media_transcoding,
+        0,
+        JSON.stringify(oCreativeData),
+        oEnvVars
+        );
+    ]]></string>
+        <string name="jsStartAd"><![CDATA[
+    window.oAdOS.startAd();
+    ]]></string>
+
+</resources>

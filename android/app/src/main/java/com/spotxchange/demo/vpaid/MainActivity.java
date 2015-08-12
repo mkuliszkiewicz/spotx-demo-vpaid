@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
-    private static final String TOAST_TEXT = "Testing.";
+    private static final String TOAST_TEXT = "Loading channel 68801...";
 
     private Button _showButton;
     private WebView _adWebView;
@@ -80,19 +80,62 @@ public class MainActivity extends Activity {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private void loadInterstitial() {
         _showButton.setEnabled(false);
-        _adWebView.setVisibility(View.INVISIBLE);
-        _adWebView.loadUrl("http://local.spotxcdn.com/adcallback");
-        _adWebView.getSettings().setJavaScriptEnabled(true);
+
         WebView.setWebContentsDebuggingEnabled(true);
+        _adWebView.setVisibility(View.INVISIBLE);
+        _adWebView.getSettings().setJavaScriptEnabled(true);
+        //_adWebView.loadUrl("http://local.spotxcdn.com/adcallback");
+        _adWebView.loadDataWithBaseURL(
+                "http://search.spotxchange.com",
+                getString(R.string.PLACEHOLDER_htmlAdBrokerScript),
+                "text/html",
+                "utf8",
+                null
+        );
 
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
                 _showButton.setEnabled(true);
-                //showInterstitial();
 
+                _adWebView.evaluateJavascript(
+                        getString(R.string.jsEnvironment),
+                        null
+                );
+                _adWebView.evaluateJavascript(
+                        getString(R.string.PLACEHOLDER_jsAdParameters),
+                        null
+                );
+
+                _adWebView.evaluateJavascript(
+                        getString(R.string.jsGetVPAIDAd),
+                        null
+                );
+                Toast.makeText(MainActivity.this, "ctor", Toast.LENGTH_SHORT).show();
             }
         }, 5000);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                _adWebView.evaluateJavascript(
+                    getString(R.string.jsInitAd),
+                    null
+                );
+                Toast.makeText(MainActivity.this, "init", Toast.LENGTH_SHORT).show();
+            }
+        }, 7000);
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                _adWebView.evaluateJavascript(
+                    getString(R.string.jsStartAd),
+                    null
+                );
+                Toast.makeText(MainActivity.this, "start", Toast.LENGTH_SHORT).show();
+            }
+        }, 10000);
     }
 
     private void closeAd() {
