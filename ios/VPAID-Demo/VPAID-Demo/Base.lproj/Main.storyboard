@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -18,22 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnK-nd-Cra">
-                                <rect key="frame" x="16" y="20" width="150" height="30"/>
-                                <state key="normal" title="Launch Web View">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnK-nd-Cra">
+                                <rect key="frame" x="491" y="28" width="50" height="30"/>
+                                <state key="normal" title="GO">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="btnLaunchWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rmb-vV-Msp"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter vast url" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJp-gx-r9I">
+                                <rect key="frame" x="16" y="28" width="467" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rhy-hr-hGa">
+                                <rect key="frame" x="549" y="28" width="35" height="30"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="1" green="0.22133834275648112" blue="0.1824268143425285" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnCloseWebView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YqU-jJ-x5n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="TnK-nd-Cra" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ObR-Uc-gVa"/>
-                            <constraint firstItem="TnK-nd-Cra" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zjp-l0-zuY"/>
+                            <constraint firstItem="Rhy-hr-hGa" firstAttribute="leading" secondItem="TnK-nd-Cra" secondAttribute="trailing" constant="8" id="2Bc-g6-mP6"/>
+                            <constraint firstItem="Rhy-hr-hGa" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="Kbj-Jq-s7K"/>
+                            <constraint firstItem="aJp-gx-r9I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bdA-1k-J2G"/>
+                            <constraint firstItem="Rhy-hr-hGa" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="e3G-gf-EiX"/>
+                            <constraint firstItem="aJp-gx-r9I" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="j75-aS-3Hd"/>
+                            <constraint firstItem="TnK-nd-Cra" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ufu-xe-wf6"/>
+                            <constraint firstItem="TnK-nd-Cra" firstAttribute="leading" secondItem="aJp-gx-r9I" secondAttribute="trailing" constant="8" id="weB-NS-v2H"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textFieldVastUrl" destination="aJp-gx-r9I" id="0i1-w7-Kik"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
