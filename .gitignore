@@ -8,9 +8,14 @@
 # Java class files
 *.class
 
+# Mac Files
+.DS_Store
+._.DS_Store
+
 # Generated files
 bin/
 gen/
+xcuserdata/
 
 # Gradle files
 .gradle/
