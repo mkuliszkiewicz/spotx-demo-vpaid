@@ -15,21 +15,29 @@
         android:text="@string/interstitial_ad_sample"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
-    <TextView
-        android:id="@+id/level"
+    <android.inputmethodservice.ExtractEditText
+        android:id="@+id/target"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/app_title"
         android:layout_centerHorizontal="true"
-        android:text="@string/channel_id"
+        android:text="@string/default_target"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
 
+    <Button
+        android:id="@+id/load_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/load_ad"/>
     <Button
         android:id="@+id/show_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_below="@id/load_button"
         android:text="@string/show_ad"/>
     <WebView
         android:visibility="invisible"

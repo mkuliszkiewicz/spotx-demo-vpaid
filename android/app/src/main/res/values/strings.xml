@@ -6,5 +6,8 @@
     <string name="interstitial_ad_sample">Interstitial Ad Sample</string>
     <string name="show_ad">Show Ad</string>
 
-    <string name="channel_id">68801</string>
+    <string name="default_target">
+        <![CDATA[http://search.spotxchange.com/vast/2.00/85394?VPAID=js&app[domain]=com.spotxchange.vpaid]]>
+    </string>
+    <string name="load_ad">Load ad</string>
 </resources>
