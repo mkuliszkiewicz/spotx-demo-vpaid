@@ -113,7 +113,7 @@ class ViewController: UIViewController {
             "<script type=\"text/javascript\"> \n" +
                 "\t var oAdOS, iContentWidth = window.innerWidth || 320, iContentHeight = window.innerHeight || 240, strViewMode = \"normal\", oEnvVars = {  }; \n" +
                 "\t var oCreativeData = %@; \n" +
-                "\t if(document.readyState == \"complete\"){ window.oAdOS = getVPAIDAd(); window.oAdOS.subscribe(\"AdPaused\", function(){ window.open(\"vpaid://hello\"); });    } else { window.onload = function() { window.oAdOS = getVPAIDAd(); window.oAdOS.subscribe(\"AdPaused\", function(){ window.open(\"vpaid://hello\"); });    }}; \n" +
+                "\t if(document.readyState == \"complete\"){ window.oAdOS = getVPAIDAd(); } else { window.onload = function() { window.oAdOS = getVPAIDAd(); }}; \n" +
             "</script> \n" +
             "</head><body></body></html>", mediaUrl, adParams)
     }
