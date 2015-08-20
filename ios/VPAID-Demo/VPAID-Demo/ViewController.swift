@@ -123,9 +123,9 @@ class ViewController: UIViewController {
 class VpaidWebViewDelegate: NSObject, UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         var u = request.URL?.absoluteString
-        println(u!)
-        return (u == "about:blank")
-        //return true
+        //println(u!)
+        //return (u == "about:blank")
+        return true
     }
 }
 
