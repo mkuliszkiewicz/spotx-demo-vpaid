@@ -47,8 +47,12 @@
         }
     };
     ]]></string>
+    <!-- When calling native interface functions, we wrap them in an anonymous function to prevent
+    "npmethod called on non-npobject" errors that happen when attempting to bind external interfaces
+    to variables in javascript. -->
     <string name="jsInitAd"><![CDATA[
-    window.oAdOS.subscribe(\"AdLoaded\", NativeInterface.onAdLoaded());
+    window.oAdOS.subscribe(function() {NativeInterface.onAdLoaded();}, \"AdLoaded\");
+    window.oAdOS.subscribe(function() {NativeInterface.onAdStarted();}, \"AdStarted\");
 
     window.oAdOS.initAd(
         iContentWidth,
@@ -61,5 +65,9 @@
     ]]></string>
     <string name="jsStartAd"><![CDATA[
     window.oAdOS.startAd();
+    ]]></string>
+    <string name="jsInsertVideoSlot"><![CDATA[
+    var videoSlot = window.document.createElement(\"video\");
+    oEnvVars[\"videoSlot\"] = videoSlot;
     ]]></string>
 </resources>

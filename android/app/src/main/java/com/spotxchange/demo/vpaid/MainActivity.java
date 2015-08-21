@@ -137,12 +137,10 @@ public class MainActivity extends Activity {
     private void showInterstitial() {
         // Show the ad if it's ready. Otherwise toast and reload the ad.
         if(_adWebView != null) {
-            _adWebView.setVisibility(View.VISIBLE);
             _adWebView.evaluateJavascript(
-                    getString(R.string.jsStartAd),
-                    null
+                getString(R.string.jsStartAd),
+                null
             );
-            Toast.makeText(MainActivity.this, "start", Toast.LENGTH_SHORT).show();
         }
         else {
             Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
@@ -191,8 +189,7 @@ public class MainActivity extends Activity {
         Context _context;
         VPAIDResponse _response;
 
-        VpaidAdInterface(Context context, VPAIDResponse vpaidResponse)
-        {
+        VpaidAdInterface(Context context, VPAIDResponse vpaidResponse) {
             _context = context;
             _response = vpaidResponse;
         }
@@ -201,14 +198,14 @@ public class MainActivity extends Activity {
         @JavascriptInterface
         public void onPageLoaded() {
             evaluateJavascript(
-                getString(R.string.jsEnvironment)
+                    getString(R.string.jsEnvironment)
             );
 
             evaluateJavascript(
-                String.format(
-                    getString(R.string.jsAdParameters),
-                    _response.adParameters
-                )
+                    String.format(
+                            getString(R.string.jsAdParameters),
+                            _response.adParameters
+                    )
             );
 
             evaluateJavascript(
@@ -230,6 +227,18 @@ public class MainActivity extends Activity {
                 @Override
                 public void run() {
                     _showButton.setEnabled(true);
+                    Toast.makeText(MainActivity.this, "Ad loaded.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void onAdStarted() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    _adWebView.setVisibility(View.VISIBLE);
+                    Toast.makeText(MainActivity.this, "Ad started.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
