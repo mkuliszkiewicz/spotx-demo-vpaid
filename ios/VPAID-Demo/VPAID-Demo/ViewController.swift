@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  VPAID-Demo
 //
-//  Created by sjulian on 8/8/15.
+//  Created by scottjulian on 8/8/15.
 //  Copyright (c) 2015 spotx. All rights reserved.
 //
 
@@ -10,8 +10,8 @@ import UIKit
 import Foundation
 import SWXMLHash
 
-let bundleUrlParam = "&app%5Bbundle%5D=com.spotxchange.android-vpaid-demo"
 let defaultVastURL = "http://search.spotxchange.com/vast/2.00/85394?VPAID=js&app[domain]=com.spotxchange.vpaid"
+let bundleUrlParam = "&app%5Bbundle%5D=com.spotxchange.android-vpaid-demo"
 let adBrokerUrl = "http://aka.spotxcdn.com/media/videos/js/ad/InstreamAdBroker_2015-07-07_14-37.debug.js"
 
 var vpaidWebView: UIWebView = UIWebView(frame: CGRectMake(0, 50, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
@@ -36,7 +36,6 @@ class ViewController: UIViewController {
 
     @IBAction func btnLaunchWebView(sender: AnyObject) {
         var vastUrl = self.textFieldVastUrl.text
-        //self.setupWebView()
         vpaidWebView.loadHTMLString("<html><head></head><body><center>loading...</center></body></html>", baseURL: nil)
         self.view.addSubview(vpaidWebView)
         self.fetchVastThenLoadVpaidWebView(vastUrl)
@@ -86,24 +85,6 @@ class ViewController: UIViewController {
         var html = self.createHtml(adParams, mediaUrl: mediaUrl)
         vpaidWebView.loadHTMLString(createHtml(adParams, mediaUrl: mediaUrl), baseURL: nil)
         self.view.addSubview(vpaidWebView)
-
-        //
-        // TODO: listen for VPAID events (but I don't want to, so here are some dispatches)
-        //
-
-        // AdOS.initAd()
-        var delay = 2 * Double(NSEC_PER_SEC)
-        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()){
-            vpaidWebView.stringByEvaluatingJavaScriptFromString("window.oAdOS.initAd(iContentWidth, iContentHeight, oEnvVars.media_transcoding, 0, JSON.stringify(oCreativeData), oEnvVars);");
-        }
-
-        // AdOS.startAd()
-        delay = 4 * Double(NSEC_PER_SEC)
-        time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue()){
-            vpaidWebView.stringByEvaluatingJavaScriptFromString("window.oAdOS.startAd();");
-        }
     }
 
     private func createHtml(adParams: String, mediaUrl: String) -> String{
@@ -111,21 +92,52 @@ class ViewController: UIViewController {
             "<html><head> \n" +
             "<script src=\"%@\" type=\"text/javascript\"></script> \n" +
             "<script type=\"text/javascript\"> \n" +
-                "\t var oAdOS, iContentWidth = window.innerWidth || 320, iContentHeight = window.innerHeight || 240, strViewMode = \"normal\", oEnvVars = {  }; \n" +
-                "\t var oCreativeData = %@; \n" +
-                "\t if(document.readyState == \"complete\"){ window.oAdOS = getVPAIDAd(); } else { window.onload = function() { window.oAdOS = getVPAIDAd(); }}; \n" +
+                self.getVpaidJS() +
             "</script> \n" +
             "</head><body></body></html>", mediaUrl, adParams)
     }
 
+    private func getVpaidJS() -> String{
+        let path = NSBundle.mainBundle().pathForResource("ios-vpaid", ofType: "js")
+        return String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
+    }
+
 }
 
+// MARK: WebViewDelegate
+
 class VpaidWebViewDelegate: NSObject, UIWebViewDelegate {
+
+    let vpaidPrefix = "vpaid2://"
+
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        var u = request.URL?.absoluteString
-        //println(u!)
-        //return (u == "about:blank")
+        var url = request.URL?.absoluteString
+        if(url?.rangeOfString(vpaidPrefix) != nil){
+            var event = url?.stringByReplacingOccurrencesOfString(vpaidPrefix, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            self.processVpaidEvent(event!)
+            return false
+        }
+        //return (url == "about:blank") // uncomment to stop click-thrus
         return true
+    }
+
+    private func processVpaidEvent(event: String){
+        switch event {
+            case "ad_loaded":
+                vpaidWebView.stringByEvaluatingJavaScriptFromString("window.oAdOS.startAd();")
+            case "ad_started":
+                break
+            case "ad_error":
+                break
+            case "ad_paused":
+                break
+            case "ad_stopped":
+                break
+            case "ad_clicked":
+                break
+            default:
+                break
+        }
     }
 }
 
