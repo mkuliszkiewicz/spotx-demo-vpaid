@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2588E1941B95551A0085D128 /* VPAIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2588E1931B95551A0085D128 /* VPAIDViewController.m */; };
 		2588E1971B9555C70085D128 /* ServerVpaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2588E1961B9555C70085D128 /* ServerVpaidViewController.m */; };
+		2588E19E1B95FA7B0085D128 /* Html5VpaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2588E19D1B95FA7B0085D128 /* Html5VpaidViewController.swift */; };
+		2588E19F1B95FB2B0085D128 /* Html5VpaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2588E19D1B95FA7B0085D128 /* Html5VpaidViewController.swift */; };
+		2588E1A11B95FF4B0085D128 /* demo.html in Resources */ = {isa = PBXBuildFile; fileRef = 2588E1A01B95FF4B0085D128 /* demo.html */; };
 		258B19D61B7659060065A317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19D51B7659060065A317 /* AppDelegate.swift */; };
 		258B19D81B7659060065A317 /* NativeVpaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19D71B7659060065A317 /* NativeVpaidViewController.swift */; };
 		258B19DB1B7659060065A317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 258B19D91B7659060065A317 /* Main.storyboard */; };
@@ -37,6 +40,8 @@
 		2588E1951B95556D0085D128 /* ServerVpaidViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerVpaidViewController.h; sourceTree = "<group>"; };
 		2588E1961B9555C70085D128 /* ServerVpaidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerVpaidViewController.m; sourceTree = "<group>"; };
 		2588E19B1B95568C0085D128 /* VPAID-Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VPAID-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
+		2588E19D1B95FA7B0085D128 /* Html5VpaidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Html5VpaidViewController.swift; sourceTree = "<group>"; };
+		2588E1A01B95FF4B0085D128 /* demo.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = demo.html; sourceTree = "<group>"; };
 		258B19D01B7659060065A317 /* VPAID-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPAID-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258B19D41B7659060065A317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258B19D51B7659060065A317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +109,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		2588E19C1B95FA4E0085D128 /* HTML5 */ = {
+			isa = PBXGroup;
+			children = (
+				2588E19D1B95FA7B0085D128 /* Html5VpaidViewController.swift */,
+				2588E1A01B95FF4B0085D128 /* demo.html */,
+			);
+			name = HTML5;
+			sourceTree = "<group>";
+		};
 		258B19C71B7659060065A317 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				258B19D51B7659060065A317 /* AppDelegate.swift */,
+				2588E19C1B95FA4E0085D128 /* HTML5 */,
 				2588E1991B9555FB0085D128 /* ServerSide */,
 				2588E1981B9555DF0085D128 /* ClientSide */,
 				2588E19A1B9556120085D128 /* Resources */,
@@ -267,6 +282,7 @@
 				258B19E01B7659060065A317 /* LaunchScreen.xib in Resources */,
 				258B19DD1B7659060065A317 /* Images.xcassets in Resources */,
 				258B4BF81B876FE400E5B5A7 /* ios-vpaid.js in Resources */,
+				2588E1A11B95FF4B0085D128 /* demo.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +365,7 @@
 				258B19D81B7659060065A317 /* NativeVpaidViewController.swift in Sources */,
 				258B19D61B7659060065A317 /* AppDelegate.swift in Sources */,
 				2588E1941B95551A0085D128 /* VPAIDViewController.m in Sources */,
+				2588E19E1B95FA7B0085D128 /* Html5VpaidViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2588E19F1B95FB2B0085D128 /* Html5VpaidViewController.swift in Sources */,
 				258B19EC1B7659070065A317 /* VPAID_DemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -135,15 +135,36 @@
                     <connections>
                         <segue destination="mBD-PN-Xg8" kind="relationship" relationship="viewControllers" id="uQb-2R-R8D"/>
                         <segue destination="tX2-DX-ZAB" kind="relationship" relationship="viewControllers" id="HK5-SU-ngb"/>
+                        <segue destination="HCx-gg-6I7" kind="relationship" relationship="viewControllers" id="2dg-TW-ZYP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CRI-h6-PdP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-785" y="848"/>
         </scene>
+        <!--HTML5 VPAID-->
+        <scene sceneID="DfJ-vz-2zP">
+            <objects>
+                <viewController id="HCx-gg-6I7" customClass="Html5VpaidViewController" customModule="VPAID_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y4X-Z5-Rmt"/>
+                        <viewControllerLayoutGuide type="bottom" id="6VH-SB-d42"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="77y-Ln-ONc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="HTML5 VPAID" image="paper-clip-7" id="qBs-Mb-bHV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DXL-7W-lgp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-609" y="2016"/>
+        </scene>
     </scenes>
     <resources>
         <image name="origami-7" width="30" height="30"/>
+        <image name="paper-clip-7" width="30" height="30"/>
         <image name="table-tennis-7" width="30" height="30"/>
     </resources>
 </document>
