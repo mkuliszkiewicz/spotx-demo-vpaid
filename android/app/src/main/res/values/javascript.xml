@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="jsEnvironment"><![CDATA[
+    var oAdOS,
+        iContentWidth = window.innerWidth || 320,
+        iContentHeight = window.innerHeight || 240,
+        strViewMode = \'normal\',
+        oEnvVars = {
+        };
+    ]]></string>
+    <string name="jsAdParameters">
+        "var oCreativeData = %s;"
+    </string>
+    <string name="htmlAdBrokerScript"><![CDATA[
+        <!DOCTYPE html>
+        <head>
+            <script src="%s" type="text/javascript"></script>
+            <script>
+                var pollingId,
+                    nativeCallback = function() {
+                        if (window.NativeInterface && window.NativeInterface.onPageLoaded)
+                        {
+                            NativeInterface.onPageLoaded();
+                            window.clearInterval(pollingId);
+                        }
+                    };
+                pollingId = setInterval(
+                    nativeCallback,
+                    50
+                    );
+            </script>
+        </head>
+        <body/>
+    ]]></string>
+    <string name="jsGetVPAIDAd"><![CDATA[
+    if(document.readyState == \'complete\')
+    {
+        window.oAdOS = getVPAIDAd();
+        NativeInterface.onGetVpaidAd();
+    }
+    else
+    {
+        window.onload = function()
+        {
+            window.oAdOS = getVPAIDAd();
+            NativeInterface.onGetVpaidAd();
+        }
+    };
+    ]]></string>
+    <!-- When calling native interface functions, we wrap them in an anonymous function to prevent
+    "npmethod called on non-npobject" errors that happen when attempting to bind external interfaces
+    to variables in javascript. -->
+    <string name="jsInitAd"><![CDATA[
+    window.oAdOS.subscribe(function() {NativeInterface.onAdLoaded();}, \"AdLoaded\");
+    window.oAdOS.subscribe(function() {NativeInterface.onAdStarted();}, \"AdStarted\");
+
+    window.oAdOS.initAd(
+        iContentWidth,
+        iContentHeight,
+        oEnvVars.media_transcoding,
+        0,
+        JSON.stringify(oCreativeData),
+        oEnvVars
+        );
+    ]]></string>
+    <string name="jsStartAd"><![CDATA[
+    window.oAdOS.startAd();
+    ]]></string>
+    <string name="jsInsertVideoSlot"><![CDATA[
+    var videoSlot = window.document.createElement(\"video\");
+    oEnvVars[\"videoSlot\"] = videoSlot;
+    ]]></string>
+</resources>
