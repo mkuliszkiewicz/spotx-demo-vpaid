@@ -2,11 +2,12 @@
 //  AppDelegate.swift
 //  VPAID-Demo
 //
-//  Created by sjulian on 8/8/15.
+//  Created by scottjulian on 8/8/15.
 //  Copyright (c) 2015 spotx. All rights reserved.
 //
 
 import UIKit
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,9 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("6e44251ef53f1ee0e452f660408495be");
+        BITHockeyManager.sharedHockeyManager().startManager();
         return true
     }
+
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

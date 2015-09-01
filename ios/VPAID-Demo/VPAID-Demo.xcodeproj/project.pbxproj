@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2588E1941B95551A0085D128 /* VPAIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2588E1931B95551A0085D128 /* VPAIDViewController.m */; };
+		2588E1971B9555C70085D128 /* ServerVpaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2588E1961B9555C70085D128 /* ServerVpaidViewController.m */; };
 		258B19D61B7659060065A317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19D51B7659060065A317 /* AppDelegate.swift */; };
-		258B19D81B7659060065A317 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19D71B7659060065A317 /* ViewController.swift */; };
+		258B19D81B7659060065A317 /* NativeVpaidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19D71B7659060065A317 /* NativeVpaidViewController.swift */; };
 		258B19DB1B7659060065A317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 258B19D91B7659060065A317 /* Main.storyboard */; };
 		258B19DD1B7659060065A317 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 258B19DC1B7659060065A317 /* Images.xcassets */; };
 		258B19E01B7659060065A317 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 258B19DE1B7659060065A317 /* LaunchScreen.xib */; };
 		258B19EC1B7659070065A317 /* VPAID_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19EB1B7659060065A317 /* VPAID_DemoTests.swift */; };
 		258B4BF81B876FE400E5B5A7 /* ios-vpaid.js in Resources */ = {isa = PBXBuildFile; fileRef = 258B4BF71B876FE400E5B5A7 /* ios-vpaid.js */; };
 		25F4C9A71B7BAF2800ECD35B /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F4C9A61B7BAF2800ECD35B /* SWXMLHash.framework */; };
-		5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B1505355F86328599B32B3 /* Pods.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B1505355F86328599B32B3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,10 +32,15 @@
 
 /* Begin PBXFileReference section */
 		04AB6505A43AEC8230E7EFD5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2588E1921B9554F10085D128 /* VPAIDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VPAIDViewController.h; sourceTree = "<group>"; };
+		2588E1931B95551A0085D128 /* VPAIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPAIDViewController.m; sourceTree = "<group>"; };
+		2588E1951B95556D0085D128 /* ServerVpaidViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerVpaidViewController.h; sourceTree = "<group>"; };
+		2588E1961B9555C70085D128 /* ServerVpaidViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerVpaidViewController.m; sourceTree = "<group>"; };
+		2588E19B1B95568C0085D128 /* VPAID-Demo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VPAID-Demo-Bridging-Header.h"; sourceTree = "<group>"; };
 		258B19D01B7659060065A317 /* VPAID-Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPAID-Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258B19D41B7659060065A317 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258B19D51B7659060065A317 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		258B19D71B7659060065A317 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		258B19D71B7659060065A317 /* NativeVpaidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeVpaidViewController.swift; sourceTree = "<group>"; };
 		258B19DA1B7659060065A317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		258B19DC1B7659060065A317 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		258B19DF1B7659060065A317 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -66,6 +73,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2588E1981B9555DF0085D128 /* ClientSide */ = {
+			isa = PBXGroup;
+			children = (
+				258B19D71B7659060065A317 /* NativeVpaidViewController.swift */,
+				258B4BF71B876FE400E5B5A7 /* ios-vpaid.js */,
+			);
+			name = ClientSide;
+			sourceTree = "<group>";
+		};
+		2588E1991B9555FB0085D128 /* ServerSide */ = {
+			isa = PBXGroup;
+			children = (
+				2588E1921B9554F10085D128 /* VPAIDViewController.h */,
+				2588E1931B95551A0085D128 /* VPAIDViewController.m */,
+				2588E1951B95556D0085D128 /* ServerVpaidViewController.h */,
+				2588E1961B9555C70085D128 /* ServerVpaidViewController.m */,
+				2588E19B1B95568C0085D128 /* VPAID-Demo-Bridging-Header.h */,
+			);
+			name = ServerSide;
+			sourceTree = "<group>";
+		};
+		2588E19A1B9556120085D128 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				258B19D91B7659060065A317 /* Main.storyboard */,
+				258B19DC1B7659060065A317 /* Images.xcassets */,
+				258B19DE1B7659060065A317 /* LaunchScreen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		258B19C71B7659060065A317 = {
 			isa = PBXGroup;
 			children = (
@@ -90,11 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				258B19D51B7659060065A317 /* AppDelegate.swift */,
-				258B19D71B7659060065A317 /* ViewController.swift */,
-				258B4BF71B876FE400E5B5A7 /* ios-vpaid.js */,
-				258B19D91B7659060065A317 /* Main.storyboard */,
-				258B19DC1B7659060065A317 /* Images.xcassets */,
-				258B19DE1B7659060065A317 /* LaunchScreen.xib */,
+				2588E1991B9555FB0085D128 /* ServerSide */,
+				2588E1981B9555DF0085D128 /* ClientSide */,
+				2588E19A1B9556120085D128 /* Resources */,
 				258B19D31B7659060065A317 /* Supporting Files */,
 			);
 			path = "VPAID-Demo";
@@ -156,6 +192,7 @@
 				258B19CE1B7659060065A317 /* Resources */,
 				9457F4CCC8E2063D9D75BC23 /* Embed Pods Frameworks */,
 				69073F5112467B41D4614DAF /* Copy Pods Resources */,
+				258B4BF91B87998100E5B5A7 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -243,6 +280,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		258B4BF91B87998100E5B5A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n\"$FILE\"\nfi";
+		};
 		69073F5112467B41D4614DAF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,8 +345,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				258B19D81B7659060065A317 /* ViewController.swift in Sources */,
+				2588E1971B9555C70085D128 /* ServerVpaidViewController.m in Sources */,
+				258B19D81B7659060065A317 /* NativeVpaidViewController.swift in Sources */,
 				258B19D61B7659060065A317 /* AppDelegate.swift in Sources */,
+				2588E1941B95551A0085D128 /* VPAIDViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +478,7 @@
 			baseConfigurationReference = 04AB6505A43AEC8230E7EFD5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -434,6 +487,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VPAID-Demo/VPAID-Demo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -442,6 +497,7 @@
 			baseConfigurationReference = 6CDD04BC676E435C74C773BE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -450,6 +506,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VPAID-Demo/VPAID-Demo-Bridging-Header.h";
 			};
 			name = Release;
 		};
