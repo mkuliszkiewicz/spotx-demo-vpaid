@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NativeVastViewController.swift
 //  VPAID-Demo
 //
 //  Created by scottjulian on 8/8/15.
@@ -17,7 +17,11 @@ let adBrokerUrl = "http://aka.spotxcdn.com/media/videos/js/ad/InstreamAdBroker_2
 var vpaidWebView: UIWebView = UIWebView(frame: CGRectMake(0, 50, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
 var vpaidWebViewDelegate: VpaidWebViewDelegate = VpaidWebViewDelegate()
 
-class ViewController: UIViewController {
+/*
+var url = NSURL(string: "http://nameless-tundra-9674.herokuapp.com/vpaid/85394?app.domain=com.spotxchange.vpaid&autoplay=0&events=true")
+vpaidWebView.loadRequest(NSURLRequest(URL: url!))
+*/
+class NativeVpaidViewController: UIViewController {
 
     // MARK: Set Up
 
@@ -49,7 +53,7 @@ class ViewController: UIViewController {
 
     private func setupWebView(){
         vpaidWebView.removeFromSuperview()
-        vpaidWebView = UIWebView(frame: CGRectMake(0, 68, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+        vpaidWebView = UIWebView(frame: CGRectMake(0, 68, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 49))
         vpaidWebView.allowsInlineMediaPlayback = true
         vpaidWebView.mediaPlaybackRequiresUserAction = false
         vpaidWebView.delegate = vpaidWebViewDelegate
@@ -75,7 +79,9 @@ class ViewController: UIViewController {
                         self.setupWebView()
                     }
                 ))
-                self.presentViewController(refreshAlert, animated: true, completion: nil)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.presentViewController(refreshAlert, animated: true, completion: nil)
+                })
             }
         }
         task.resume()
