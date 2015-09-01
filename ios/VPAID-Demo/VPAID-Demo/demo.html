@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="author" content="SpotXchange, Inc.">
+  <meta name="description" content="SpotX VPAID Integration Demo">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <link rel="icon" href="https://www.spotxchange.com/favicon.ico">
+
+  <title>SpotX VPAID Integration</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="https://maxcdn.bootstrapcdn.com/js/ie10-viewport-bug-workaround.js"></script>
+</head>
+<body>
+
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Channel ID</label>
+      <input id="channelId" type="text" class="form-control" value="85394">
+    </div>
+    <div class="checkbox">
+       <label>
+         <input id="autoplay" type="checkbox" checked> autoplay (will not work in Safari)
+       </label>
+     </div>
+    <button id="playAd" class="btn btn-default">Submit</button>
+  </form>
+
+  <hr/>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Advertisement</div>
+    <div id="adContainer" class="panel-body"></div>
+  </div>
+
+  <script>
+
+  $(window).on('message', function(e) {
+    var event = e.originalEvent.data;
+    if (event.startsWith('vpaid://')) {
+      console.info('VPAID Event: ' + event);
+      switch (event) {
+      case 'vpaid://adStopped':
+      case 'vpaid://adError':
+        $('#adContainer').empty();
+        break;
+      }
+   }
+  });
+
+  $(document).ready(function() {
+
+    $('#playAd').on('click', function(e) {
+      var channelId = $('#channelId').val();
+      if (!channelId) return;
+
+      var url = 'http://nameless-tundra-9674.herokuapp.com/vpaid/' + channelId + '?' + $.param({
+        'app.domain': 'com.spotxchange.vpaid',
+        'autoplay': $('#autoplay').is(':checked')
+      });
+
+      $('#adContainer').empty()
+        .append($('<iframe>').attr('src', url))
+        .append($('<div class="caption">').text('Tag URL: ' + url));
+
+      e.preventDefault();
+      return false;
+    });
+  });
+
+  </script>
+</body>
+</html>
