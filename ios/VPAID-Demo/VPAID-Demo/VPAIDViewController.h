@@ -1,5 +1,5 @@
 //
-//  Copyright (c) 2015 SpotX, Inc. All rights reserved.
+//  Copyright (c) 2015 SpotX. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

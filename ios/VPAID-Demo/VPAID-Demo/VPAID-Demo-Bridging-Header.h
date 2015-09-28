@@ -1,9 +1,5 @@
 //
-//  VPAID-Demo-Bridging-Header.h
-//  VPAID-Demo
-//
-//  Created by sjulian on 8/31/15.
-//  Copyright (c) 2015 spotxchange. All rights reserved.
+//  Copyright (c) 2015 SpotX. All rights reserved.
 //
 
 #ifndef VPAID_Demo_VPAID_Demo_Bridging_Header_h
