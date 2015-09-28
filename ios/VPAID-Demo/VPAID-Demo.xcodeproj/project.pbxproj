@@ -242,6 +242,7 @@
 		258B19C81B7659060065A317 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = spotxchange;
 				TargetAttributes = {

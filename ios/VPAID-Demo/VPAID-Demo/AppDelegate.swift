@@ -1,9 +1,5 @@
 //
-//  AppDelegate.swift
-//  VPAID-Demo
-//
-//  Created by scottjulian on 8/8/15.
-//  Copyright (c) 2015 spotx. All rights reserved.
+//  Copyright (c) 2015 SpotX. All rights reserved.
 //
 
 import UIKit

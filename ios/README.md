@@ -19,34 +19,46 @@ vpaidWebView.delegate = vpaidWebViewDelegate
 Set up the UIWebViewDelegate to listen for the VPAID events
 ```swift
 class VpaidWebViewDelegate: NSObject, UIWebViewDelegate {
-
+    // our custom prefix to listen for in URLs
     let vpaidPrefix = "vpaid2://"
 
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        var url = request.URL?.absoluteString
+        // get the URL of the request
+        let url = request.URL?.absoluteString
+        // check if the URL matches our prefix
         if(url?.rangeOfString(vpaidPrefix) != nil){
-            var event = url?.stringByReplacingOccurrencesOfString(vpaidPrefix, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            // get the VPAID event out of the URL
+            let event = url?.stringByReplacingOccurrencesOfString(vpaidPrefix, withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+            // process it
             self.processVpaidEvent(event!)
             return false
         }
+        //return (url == "about:blank") // uncomment to stop click-thrus
         return true
     }
 
     private func processVpaidEvent(event: String){
         switch event {
             case "ad_loaded":
+                // let's start the ad
                 vpaidWebView.stringByEvaluatingJavaScriptFromString("window.oAdOS.startAd();")
             case "ad_started":
+                // ...
                 break
             case "ad_error":
+                // ...
                 break
             case "ad_paused":
+                // ...
                 break
             case "ad_stopped":
+                // ...
                 break
             case "ad_clicked":
+                // ...
                 break
             default:
+                // ...
                 break
         }
     }
@@ -55,31 +67,55 @@ class VpaidWebViewDelegate: NSObject, UIWebViewDelegate {
 
 Then fetch the VAST response and parse out the media file and ad parameters:
 ```swift
-let vurl = "http://your-vast-endpoint.com"
-let task = NSURLSession.sharedSession().dataTaskWithURL(vurl!){ (data, response, error) in
+let vurl = "https://your-vast-endpoint.com"
+let task = NSURLSession.sharedSession().dataTaskWithURL(vurl!) {(data, response, error) in
+    // parse the response xml
+    let xml = SWXMLHash.parse(data!)
 
-    var xmlData = NSString(data: data, encoding: NSUTF8StringEncoding)
-    let xml = SWXMLHash.parse(data)
+    // get the media framework
+    let mediaFramework = xml["VAST"]["Ad"]["InLine"]["Creatives"]["Creative"]["Linear"]["MediaFiles"]["MediaFile"][0].element?.attributes["apiFramework"]
+    // get the media source file
+    let mediaUrl = xml["VAST"]["Ad"]["InLine"]["Creatives"]["Creative"]["Linear"]["MediaFiles"]["MediaFile"][0].element?.text
+    // get the required parameters to play the ad
+    let adParams = xml["VAST"]["Ad"]["InLine"]["Creatives"]["Creative"]["Linear"]["AdParameters"].element?.text
 
-    var mediaUrl = xml["VAST"]["Ad"]["InLine"]["Creatives"]["Creative"]["Linear"]["MediaFiles"]["MediaFile"][0].element?.text
-    var adParams = xml["VAST"]["Ad"]["InLine"]["Creatives"]["Creative"]["Linear"]["AdParameters"].element?.text
-
-    self.loadVpaidWebView(adParams!, mediaUrl: mediaUrl!)
+    // check to make sure the media framework is VPAID and the media and parameters are not empty
+    if(mediaFramework != nil && mediaFramework! == "VPAID" && mediaUrl != nil && adParams != nil){
+        // shove it in, load it up
+        self.loadVpaidWebView(adParams!, mediaUrl: mediaUrl!)
+    }
+    else{
+        // alert the user the VAST wasn't valid
+        let refreshAlert = UIAlertController(title: "Invalid VAST response", message: "empty vast or media is not vpaid", preferredStyle: UIAlertControllerStyle.Alert)
+        refreshAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+            (action: UIAlertAction!) in
+                self.setupWebView()
+            }
+        ))
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(refreshAlert, animated: true, completion: nil)
+        })
+    }
 }
 task.resume()
 ```
 
 Then load your javascript into the UIWebView with the parameters pulled from the VAST response:
 ```swift
+/**
+*   Loads the web view with our dynamically created HTML and given javascript variables
+*/
 private func loadVpaidWebView(adParams: String, mediaUrl: String){
-    var html = self.createHtml(adParams, mediaUrl: mediaUrl)
     vpaidWebView.loadHTMLString(createHtml(adParams, mediaUrl: mediaUrl), baseURL: nil)
     self.view.addSubview(vpaidWebView)
 }
 
+/**
+*   Returns a simple HTML page (as a String) embedded with js script tags populated with the given media url and ad parameters
+*/
 private func createHtml(adParams: String, mediaUrl: String) -> String{
     return String(format:
-        "<html><head> \n" +
+        "<!DOCTYPE html><html><head> \n" +
         "<script src=\"%@\" type=\"text/javascript\"></script> \n" +
         "<script type=\"text/javascript\"> \n" +
             self.getVpaidJS() +
@@ -87,9 +123,18 @@ private func createHtml(adParams: String, mediaUrl: String) -> String{
         "</head><body></body></html>", mediaUrl, adParams)
 }
 
+/**
+*   Loads our custom javascript from the file
+*/
 private func getVpaidJS() -> String{
-    let path = NSBundle.mainBundle().pathForResource("ios-vpaid", ofType: "js")
-    return String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
+    do{
+        let path = NSBundle.mainBundle().pathForResource("ios-vpaid", ofType: "js")
+        let js = try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+        return js
+    }
+    catch{
+        return "";
+    }
 }
 ```
 

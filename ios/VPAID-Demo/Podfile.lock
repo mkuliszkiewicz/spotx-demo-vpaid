@@ -2,14 +2,14 @@ PODS:
   - HockeySDK (3.7.2):
     - HockeySDK/AllFeaturesLib (= 3.7.2)
   - HockeySDK/AllFeaturesLib (3.7.2)
-  - SWXMLHash (1.1.0)
+  - SWXMLHash (2.0.1)
 
 DEPENDENCIES:
   - HockeySDK
-  - SWXMLHash (~> 1.1.0)
+  - SWXMLHash (~> 2.0.0)
 
 SPEC CHECKSUMS:
   HockeySDK: a9f8fcb6a5ef72b95359b45ab0808407e5e44581
-  SWXMLHash: 3937b867dfe3091a84304176d80399fc2e709c37
+  SWXMLHash: 2211e0593047ef0aacfcad2fb40c1978f2f0f2e2
 
 COCOAPODS: 0.38.2

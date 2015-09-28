@@ -1,9 +1,5 @@
 //
-//  Html5VpaidViewController.swift
-//  VPAID-Demo
-//
-//  Created by scottjulian on 9/1/15.
-//  Copyright (c) 2015 spotxchange. All rights reserved.
+//  Copyright (c) 2015 SpotX. All rights reserved.
 //
 
 import UIKit
@@ -23,6 +19,9 @@ class Html5VpaidViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    /**
+    *   Setup a blank Web View that allows inline media playback
+    */
     private func setupWebView(){
         html5VpaidWebView.removeFromSuperview()
         html5VpaidWebView = UIWebView(frame: CGRectMake(0, 24, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
@@ -32,14 +31,25 @@ class Html5VpaidViewController: UIViewController {
         html5VpaidWebView.scalesPageToFit = true
     }
 
+    /**
+    *   Load the Web View with our created HTML string as a source
+    */
     private func loadWebView() {
         html5VpaidWebView.loadHTMLString(getHtml(), baseURL: nil)
         self.view.addSubview(html5VpaidWebView)
     }
 
+    /**
+    *   Returs a String of our HTML file 'demo.html'
+    */
     private func getHtml() -> String {
         let path = NSBundle.mainBundle().pathForResource("demo", ofType: "html")
-        return String(contentsOfFile: path!, encoding: NSUTF8StringEncoding, error: nil)!
+        do{
+            return try String(contentsOfFile: path!, encoding: NSUTF8StringEncoding)
+        }
+        catch{
+            return "";
+        }
     }
 
 
