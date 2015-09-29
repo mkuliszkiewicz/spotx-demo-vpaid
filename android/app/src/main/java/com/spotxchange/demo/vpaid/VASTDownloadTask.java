@@ -1,13 +1,11 @@
 package com.spotxchange.demo.vpaid;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -17,8 +15,7 @@ public class VASTDownloadTask extends AsyncTask<String, Integer, Integer> {
 
     private VASTResponseHandler _handler;
 
-    public VASTDownloadTask(VASTResponseHandler handler)
-    {
+    public VASTDownloadTask(VASTResponseHandler handler) {
         _handler = handler;
     }
 
@@ -31,8 +28,7 @@ public class VASTDownloadTask extends AsyncTask<String, Integer, Integer> {
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            if (connection.getResponseCode() >= 400)
-            {
+            if (connection.getResponseCode() >= 400) {
                 _handler.onFailure(connection.getResponseMessage());
                 return connection.getResponseCode();
             }
@@ -40,13 +36,11 @@ public class VASTDownloadTask extends AsyncTask<String, Integer, Integer> {
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
             String line;
-            while ((line = reader.readLine()) != null)
-            {
+            while ((line = reader.readLine()) != null) {
                 responseBuilder.append(line);
             }
 
-            if (responseBuilder.length() > 0)
-            {
+            if (responseBuilder.length() > 0) {
                 _handler.onSuccessResponse(responseBuilder.toString());
                 return connection.getResponseCode();
             }
