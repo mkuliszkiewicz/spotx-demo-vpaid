@@ -7,8 +7,7 @@ public class VPAIDResponse {
     public final String mediaUrl;
     public final String adParameters;
 
-    public VPAIDResponse (String mediaUrl, String adParameters)
-    {
+    public VPAIDResponse (String mediaUrl, String adParameters) {
         this.mediaUrl = mediaUrl;
         this.adParameters = adParameters;
     }

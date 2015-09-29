@@ -5,13 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.DownloadListener;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -21,12 +18,13 @@ import android.widget.Toast;
 import com.spotxchange.demo.vpaid.vastparser.VASTParser;
 import com.spotxchange.demo.vpaid.vastparser.VPAIDResponse;
 
-import org.w3c.dom.Text;
 import org.xml.sax.InputSource;
 
 import java.io.StringReader;
 
-
+/**
+ * Copyright (C) 2015 SpotXchange
+ */
 public class MainActivity extends Activity {
     private Button _loadButton;
     private Button _showButton;
@@ -37,6 +35,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // set our load ad button
         _loadButton = ((Button) findViewById(R.id.load_button));
         _loadButton.setEnabled(true);
         _loadButton.setOnClickListener(new View.OnClickListener() {
@@ -63,12 +62,16 @@ public class MainActivity extends Activity {
         Toast.makeText(this, "Ready to load ads.", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Fetches the VAST response from the given URL asynchronously, and handles the response
+     */
     private void loadVASTResponse() {
         TextView target = ((TextView) findViewById(R.id.target));
         String targetUrl =  target.getText().toString();
 
         Toast.makeText(this, "Loading " + targetUrl, Toast.LENGTH_SHORT).show();
 
+        // Download the VAST response
         VASTDownloadTask.VASTResponseHandler handler = new VASTDownloadTask.VASTResponseHandler() {
             @Override
             public void onSuccessResponse(String response) {
@@ -80,6 +83,7 @@ public class MainActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        // yay, successful VAST response, now load it
                         loadInterstitial(vpaidResponse);
                     }
                 });
@@ -87,6 +91,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onEmptyResponse() {
+                // VAST was response was empty
                 Log.d("VASTResponseHandler", "Received empty VAST response.");
                 runOnUiThread(new Runnable() {
                     @Override
@@ -98,6 +103,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onFailure(final String response) {
+                // Could not read VAST response
                 Log.e("VASTResponseHandler", "Failure: " + response);
                 runOnUiThread(new Runnable() {
                     @Override
@@ -114,25 +120,22 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         if(id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Starts the VPAID ad that has been loaded, otherwise notify user tha ad did not load
+     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private void showInterstitial() {
         // Show the ad if it's ready. Otherwise toast and reload the ad.
@@ -148,15 +151,22 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Loads the VPAID ad parsed from the VAST response into the VPAID WebView
+     * @param vpaidResponse
+     */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private void loadInterstitial(final VPAIDResponse vpaidResponse) {
         _showButton.setEnabled(false);
 
+        // Setup our WebView with a javascript interface
         WebView.setWebContentsDebuggingEnabled(true);
         _adWebView.setVisibility(View.INVISIBLE);
         _adWebView.getSettings().setJavaScriptEnabled(true);
+        // load our VAID JS interface
         _adWebView.addJavascriptInterface(new VpaidAdInterface(this, vpaidResponse), "NativeInterface");
 
+        // load the AdBroker with the given media source parsed from the VAST resposne
         _adWebView.loadDataWithBaseURL(
                 "http://search.spotxchange.com",
                 String.format(
@@ -171,8 +181,11 @@ public class MainActivity extends Activity {
         Toast.makeText(MainActivity.this, "Constructing VPAID ad...", Toast.LENGTH_SHORT).show();
     }
 
-    private void evaluateJavascript(final String javascript)
-    {
+    /**
+     * Evals the Javascript inside the VPAID WebView
+     * @param javascript
+     */
+    private void evaluateJavascript(final String javascript) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -182,9 +195,13 @@ public class MainActivity extends Activity {
     }
 
     private void closeAd() {
-        //loadInterstitial();
+        // ...
     }
 
+
+    /**
+     * Handles the VPAID events and fires off the appropriate Javascript into the VPAID WebView
+     */
     private class VpaidAdInterface {
         Context _context;
         VPAIDResponse _response;
@@ -197,32 +214,26 @@ public class MainActivity extends Activity {
         @TargetApi(Build.VERSION_CODES.KITKAT)
         @JavascriptInterface
         public void onPageLoaded() {
-            evaluateJavascript(
-                    getString(R.string.jsEnvironment)
-            );
+            // load the environment  variables
+            evaluateJavascript(getString(R.string.jsEnvironment));
 
-            evaluateJavascript(
-                    String.format(
-                            getString(R.string.jsAdParameters),
-                            _response.adParameters
-                    )
-            );
+            // load the JS ad parameters parsed from the VAST response
+            evaluateJavascript(String.format(getString(R.string.jsAdParameters),_response.adParameters));
 
-            evaluateJavascript(
-                    getString(R.string.jsGetVPAIDAd)
-            );
+            // load the getVPAIDAd JS
+            evaluateJavascript(getString(R.string.jsGetVPAIDAd));
         }
 
         @TargetApi(Build.VERSION_CODES.KITKAT)
         @JavascriptInterface
         public void onGetVpaidAd() {
-            evaluateJavascript(
-                    getString(R.string.jsInitAd)
-            );
+            // VPAID is loaded, now let's init the ad
+            evaluateJavascript(getString(R.string.jsInitAd));
         }
 
         @JavascriptInterface
         public void onAdLoaded() {
+            // Ad has successfully loaded, let's notify the user
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -234,6 +245,7 @@ public class MainActivity extends Activity {
 
         @JavascriptInterface
         public void onAdStarted() {
+            // Ad has started playing, let's notify the user
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
