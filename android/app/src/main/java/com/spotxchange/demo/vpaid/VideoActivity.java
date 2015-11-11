@@ -36,7 +36,11 @@ public class VideoActivity extends AppCompatActivity {
         if (vpaidResponse != null) {
             _view = loadInterstitial(vpaidResponse);
             //setContentView(_view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-            _view.setVisibility(View.INVISIBLE);
+
+            // On KitKat and earlier, we cannot load video in the background without causing a rendering failure (video without audio)
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                _view.setVisibility(View.VISIBLE);
+            }
         }
         else {
             finish();
