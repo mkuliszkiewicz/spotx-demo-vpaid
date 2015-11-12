@@ -10,4 +10,5 @@
         <![CDATA[http://search.spotxchange.com/vast/2.00/85394?VPAID=js&app[domain]=com.spotxchange.vpaid]]>
     </string>
     <string name="load_ad">Load ad</string>
+    <string name="title_activity_video">VideoActivity</string>
 </resources>

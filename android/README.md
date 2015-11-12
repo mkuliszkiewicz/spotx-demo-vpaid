@@ -1,7 +1,6 @@
 # SpotX VPAID Demo APP
 Testing app for SpotX's VPAID for in app WebView for Android.
 
-
 ## How to use SpotX VPAID 2.0 inside a WebView
 First fetch the VAST response from your endpoint
 ```java
@@ -83,67 +82,113 @@ public class VPAIDResponse {
         this.mediaUrl = mediaUrl;
         this.adParameters = adParameters;
     }
-}
 
-
-private void loadVASTResponse() {
-    String targetUrl =  "https://your-vast-endpoint.com"
-    // Download the VAST response
-    VASTDownloadTask.VASTResponseHandler handler = new VASTDownloadTask.VASTResponseHandler() {
-        @Override
-        public void onSuccessResponse(String response) {
-            final VPAIDResponse vpaidResponse = VASTParser.read(new InputSource(new StringReader(response)));
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    loadInterstitial(vpaidResponse); // yay, successful VAST response, now load it
-                }
-            });
-        }
-
-        @Override
-        public void onEmptyResponse() {
-            // VAST was response was empty
-        }
-
-        @Override
-        public void onFailure(final String response) {
-            // Could not read VAST response
-        }
-    };
-    new VASTDownloadTask(handler).execute(targetUrl);
-}
 ```
 
-Once you have successfully parsed your VAST XML, load it into a WebView with a custom Javascript interface we will write to listen for our VPAID events
+Once you have successfully parsed your VAST XML, queue the VAST response up for playing in a new activity. 
 ```java
-private void loadInterstitial(final VPAIDResponse vpaidResponse) {pt interface
-    WebView.setWebContentsDebuggingEnabled(true);
-    _adWebView.setVisibility(View.INVISIBLE);
-    _adWebView.getSettings().setJavaScriptEnabled(true);
-    // load our VAID JS interface
-    _adWebView.addJavascriptInterface(new VpaidAdInterface(this, vpaidResponse), "NativeInterface");
-    // load the AdBroker with the given media source parsed from the VAST resposne
-    _adWebView.loadDataWithBaseURL(
-            "http://search.spotxchange.com",
-            String.format(
-                    getString(R.string.htmlAdBrokerScript),
-                    vpaidResponse.mediaUrl
-            ),
-            "text/html",
-            "utf8",
-            null
-    );
-}
+    /**
+     * Fetches the VAST response from the given URL asynchronously, and handles the response
+     */
+    private void loadVASTResponse() {
+        TextView target = ((TextView) findViewById(R.id.target));
+        String targetUrl =  target.getText().toString();
 
-private void evaluateJavascript(final String javascript) {
-    runOnUiThread(new Runnable() {
-        @Override
-        public void run() {
-            _adWebView.evaluateJavascript(javascript, null);
-        }
-    });
-}
+        Toast.makeText(this, "Loading " + targetUrl, Toast.LENGTH_SHORT).show();
+
+        // Download the VAST response
+        VASTDownloadTask.VASTResponseHandler handler = new VASTDownloadTask.VASTResponseHandler() {
+            @Override
+            public void onSuccessResponse(String response) {
+                Log.d("VASTResponseHandler", response);
+                final VPAIDResponse vpaidResponse = VASTParser.read(new InputSource(new StringReader(response)));
+                Log.d("VASTResponseHandler", vpaidResponse.mediaUrl);
+                Log.d("VASTResponseHandler", vpaidResponse.adParameters);
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // yay, successful VAST response, now load it
+                        readyVpaidResponse(vpaidResponse);
+                    }
+                });
+            }
+
+            @Override
+            public void onEmptyResponse() {
+                // VAST was response was empty
+                Log.d("VASTResponseHandler", "Received empty VAST response.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "Received empty response when loading VAST.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(final String response) {
+                // Could not read VAST response
+                Log.e("VASTResponseHandler", "Failure: " + response);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "Received failure message when loading VAST: " + response, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        };
+
+        new VASTDownloadTask(handler).execute(targetUrl);
+    }
+
+    private void readyVpaidResponse(VPAIDResponse vpaidResponse) {
+        VideoActivity.pool.add(vpaidResponse);
+        _showButton.setEnabled(true);
+    }
+
+    private void launchVideoActivity() {
+        _showButton.setEnabled(false);
+        Intent adIntent = new Intent(this, VideoActivity.class);
+        adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(adIntent);
+    }
+```
+
+Then, when you're ready to show an add, launch a new activity with the VPAID response into a WebView with a custom Javascript interface we will write to listen for our VPAID events
+```java
+
+    /**
+     * Loads the VPAID ad parsed from the VAST response into the VPAID WebView
+     * @param vpaidResponse
+     */
+    @TargetApi(Build.VERSION_CODES.KITKAT)
+    private WebView loadInterstitial(final VPAIDResponse vpaidResponse) {
+        WebView newView = ((WebView) findViewById(R.id.interstitial));
+        // Setup our WebView with a javascript interface
+        WebView.setWebContentsDebuggingEnabled(true);
+        //_view.setVisibility(View.INVISIBLE);
+        newView.getSettings().setJavaScriptEnabled(true);
+        newView.getSettings().setMediaPlaybackRequiresUserGesture(false);
+        // load our VAID JS interface
+        newView.addJavascriptInterface(new VpaidAdInterface(this, vpaidResponse), "NativeInterface");
+
+        // load the AdBroker with the given media source parsed from the VAST resposne
+        newView.loadDataWithBaseURL(
+                "http://search.spotxchange.com",
+                String.format(
+                        getString(R.string.htmlAdBrokerScript),
+                        vpaidResponse.mediaUrl
+                ),
+                "text/html",
+                "utf8",
+                null
+        );
+
+        Toast.makeText(VideoActivity.this, "Constructing VPAID ad...", Toast.LENGTH_SHORT).show();
+
+        return newView;
+    }
 
 private class VpaidAdInterface {
     Context _context;
