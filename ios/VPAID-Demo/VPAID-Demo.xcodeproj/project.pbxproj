@@ -20,7 +20,7 @@
 		258B19EC1B7659070065A317 /* VPAID_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258B19EB1B7659060065A317 /* VPAID_DemoTests.swift */; };
 		258B4BF81B876FE400E5B5A7 /* ios-vpaid.js in Resources */ = {isa = PBXBuildFile; fileRef = 258B4BF71B876FE400E5B5A7 /* ios-vpaid.js */; };
 		25F4C9A71B7BAF2800ECD35B /* SWXMLHash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25F4C9A61B7BAF2800ECD35B /* SWXMLHash.framework */; };
-		5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B1505355F86328599B32B3 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5C26CCC094A7693A2923682F /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37B1505355F86328599B32B3 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
