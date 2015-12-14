@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EASI</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="interstitial_ad_sample">EASI Ad Demo</string>
+    <string name="show_ad">Show Ad</string>
+
+    <string name="default_target">
+        <![CDATA[data-example="foobar"]]>
+    </string>
+    <string name="load_ad">Load ad</string>
+    <string name="title_activity_video">VideoActivity</string>
+</resources>
