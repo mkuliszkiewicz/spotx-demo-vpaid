@@ -6,9 +6,19 @@
     <string name="interstitial_ad_sample">EASI Ad Demo</string>
     <string name="show_ad">Show Ad</string>
 
-    <string name="default_target">
-        <![CDATA[data-example="foobar"]]>
-    </string>
+    <string name="default_target"><![CDATA[
+        data-spotx_channel_id="85394"
+        data-spotx_content_width="300" data-spotx_content_height="250"
+
+        data-spotx_ad_unit="incontent"
+        data-spotx_content_type="game"
+        data-spotx_content_page_url="http://spotx.ninja"
+        data-spotx_app_bundle="com.spotx.ninja.demoapp"
+        data-spotx_device_ifa="unknown"
+        data-spotx_autoplay="1"
+        data-spotx_content_container_id="player"
+        data-spotx_video_slot_can_autoplay="1"
+       ]]></string>
     <string name="load_ad">Load ad</string>
     <string name="title_activity_video">VideoActivity</string>
 </resources>

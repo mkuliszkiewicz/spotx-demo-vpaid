@@ -27,9 +27,11 @@ public class VideoActivity extends AppCompatActivity {
         String scriptTag = "http://aka.spotxcdn.com/media/videos/js/easi/EASI_2015-11-10_20-56.debug.js";
         //String scriptTag = "http://search.spotxchange.com/js/spotx.js";
 
-        String scriptData = "data-example='foobar'";
         // load EASI with the script values given
-        // scriptData = getScript();
+        String scriptData = getIntent().getStringExtra(MainActivity.EXTRA_SCRIPTDATA);
+        if (scriptData == null || scriptData.isEmpty()) {
+            scriptData = getString(R.string.default_target);
+        }
 
         // Setup our WebView with a javascript interface
         WebView newView = ((WebView) findViewById(R.id.interstitial));
