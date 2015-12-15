@@ -1,4 +1,4 @@
-# SpotX VPAID Demo APP
+# SpotX EASI Demo APP
 Testing app for SpotX's EASI integration in Android WebView.
 
 
