@@ -1,13 +1,20 @@
 package com.spotxchange.demo.easi;
 
 import android.annotation.TargetApi;
+import android.app.SharedElementCallback;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 public class VideoActivity extends AppCompatActivity {
+    public final static String EXTRA_SCRIPTDATA = "SCRIPTDATA";
+
     // Current view.
     private WebView _view = null;
 
@@ -24,11 +31,16 @@ public class VideoActivity extends AppCompatActivity {
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private WebView loadInterstitial() {
-        String scriptTag = "http://aka.spotxcdn.com/media/videos/js/easi/EASI_2015-11-10_20-56.debug.js";
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String scriptTag = preferences.getString(
+            getString(R.string.tag_url),
+            getString(R.string.default_easi_url)
+            );
+
         //String scriptTag = "http://search.spotxchange.com/js/spotx.js";
 
         // load EASI with the script values given
-        String scriptData = getIntent().getStringExtra(MainActivity.EXTRA_SCRIPTDATA);
+        String scriptData = getIntent().getStringExtra(VideoActivity.EXTRA_SCRIPTDATA);
         if (scriptData == null || scriptData.isEmpty()) {
             scriptData = getString(R.string.default_target);
         }
@@ -50,6 +62,17 @@ public class VideoActivity extends AppCompatActivity {
                 "utf8",
                 null
         );
+
+        if (preferences.getBoolean( getString(R.string.lock_orientation), true)) {
+            if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+            else
+            {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        }
 
         // For debugging, compare with HTML EASI demo page
         //newView.loadUrl("http://search.spotxchange.com/test/ad/js/easi/EASI.html");

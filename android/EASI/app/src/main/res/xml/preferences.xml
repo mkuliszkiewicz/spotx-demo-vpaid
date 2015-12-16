@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/tag_url"
+        android:title="EASI Tag Url"
+        android:summary="The complete URL where easi.js is located"
+        android:defaultValue="@string/default_easi_url"
+        />
+    <CheckBoxPreference
+        android:key="@string/lock_orientation"
+        android:title="Lock orientation"
+        android:defaultValue="true"
+        />
+</PreferenceScreen>
