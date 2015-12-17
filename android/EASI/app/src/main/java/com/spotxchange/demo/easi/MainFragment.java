@@ -41,7 +41,14 @@ public class MainFragment extends Fragment {
         return _view;
     }
 
+    @Override
+    public void onStart () {
+        super.onStart();
 
+        // always enable the show button when the fragment initially becomes visible
+        _showButton.setEnabled(true);
+    }
+    
     private void launchVideoActivity() {
         _showButton.setEnabled(false);
         Intent adIntent = new Intent(getActivity(), VideoActivity.class);
