@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TXz-bU-IZz">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="EASI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-xE-LTT">
+                                <rect key="frame" x="20" y="186" width="560" height="394"/>
+                                <color key="backgroundColor" red="0.9649818497474747" green="0.9649818497474747" blue="0.9649818497474747" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">data-spotx_channel_id="85394"
+data-spotx_content_width="300" 
+data-spotx_content_height="250"
+data-spotx_ad_unit="incontent"
+data-spotx_content_type="game"
+data-spotx_content_page_url="http://spotx.ninja"
+data-spotx_app_bundle="com.spotx.ios.easi"
+data-spotx_device_ifa="unknown"
+data-spotx_autoplay="1"
+data-spotx_content_container_id="player"
+data-spotx_video_slot_can_autoplay="1"</string>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQr-OG-R77">
+                                <rect key="frame" x="480" y="72" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0EJ-A5-5Ml"/>
+                                    <constraint firstAttribute="width" constant="100" id="FBF-Qd-jy5"/>
+                                </constraints>
+                                <state key="normal" title="Show Ad">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showAdButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nN1-kl-BZQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EASI URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ka4-u2-tOb">
+                                <rect key="frame" x="20" y="72" width="88" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="KkI-97-s0o"/>
+                                    <constraint firstAttribute="height" constant="30" id="fHJ-JQ-H34"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://search.spotxchange.com/js/spotx.js" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="onw-Qo-jAX">
+                                <rect key="frame" x="20" y="110" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.96498184970000001" green="0.96498184970000001" blue="0.96498184970000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nkx-pd-09v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Script Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Vl-2n-BwW">
+                                <rect key="frame" x="20" y="148" width="118" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="118" id="P3o-LS-wVF"/>
+                                    <constraint firstAttribute="height" constant="30" id="dJl-XZ-5cp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ka4-u2-tOb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="74O-bA-ZtB"/>
+                            <constraint firstItem="pQr-OG-R77" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="D0U-49-NZI"/>
+                            <constraint firstItem="bpk-xE-LTT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EO5-BM-K0H"/>
+                            <constraint firstItem="ka4-u2-tOb" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="IDB-L1-lDL"/>
+                            <constraint firstItem="onw-Qo-jAX" firstAttribute="top" secondItem="ka4-u2-tOb" secondAttribute="bottom" constant="8" id="K0d-Ru-kwl"/>
+                            <constraint firstItem="pQr-OG-R77" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="KJq-3y-zfp"/>
+                            <constraint firstItem="bpk-xE-LTT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Po4-Dh-rDU"/>
+                            <constraint firstItem="bpk-xE-LTT" firstAttribute="top" secondItem="3Vl-2n-BwW" secondAttribute="bottom" constant="8" id="RGD-kC-1CI"/>
+                            <constraint firstItem="bpk-xE-LTT" firstAttribute="top" secondItem="3Vl-2n-BwW" secondAttribute="bottom" constant="8" id="Zuv-X2-s7T"/>
+                            <constraint firstItem="3Vl-2n-BwW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bo7-R9-LND"/>
+                            <constraint firstItem="onw-Qo-jAX" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="gxd-7f-ow7"/>
+                            <constraint firstItem="onw-Qo-jAX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hgV-LS-pwC"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bpk-xE-LTT" secondAttribute="bottom" constant="20" id="n8n-LY-lbu"/>
+                            <constraint firstItem="3Vl-2n-BwW" firstAttribute="top" secondItem="onw-Qo-jAX" secondAttribute="bottom" constant="8" id="qKa-j3-eH5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="nkd-8w-ebU">
+                        <barButtonItem key="rightBarButtonItem" title="settings" id="jSU-SJ-LuY">
+                            <connections>
+                                <action selector="settingsPressed:" destination="BYZ-38-t0r" id="da8-Jt-De4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonShowAd" destination="pQr-OG-R77" id="Rtm-LN-Voy"/>
+                        <outlet property="scriptDataTextField" destination="bpk-xE-LTT" id="RLP-ud-J4h"/>
+                        <outlet property="urlTextField" destination="onw-Qo-jAX" id="XxE-Oy-C1N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="386" y="15"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y1d-iA-OzR">
+            <objects>
+                <navigationController id="TXz-bU-IZz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7bw-mA-MFP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="l6w-kv-Ufy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dLl-39-FE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-345" y="15"/>
+        </scene>
+    </scenes>
+</document>
