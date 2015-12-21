@@ -1,5 +1,5 @@
 //
-//  Copyright © 2015 spotxchange. All rights reserved.
+//  Copyright © 2015 spotx. All rights reserved.
 //
 
 import UIKit

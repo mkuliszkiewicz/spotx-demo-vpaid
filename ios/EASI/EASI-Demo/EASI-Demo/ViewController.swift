@@ -1,16 +1,10 @@
 //
-//  ViewController.swift
-//  EASI-Demo
-//
-//  Created by sjulian on 12/11/15.
-//  Copyright © 2015 spotxchange. All rights reserved.
+//  Copyright © 2015 spotx. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
-
-  let easiJsUrl = "http://search.spotxchange.com/js/spotx.js"
 
   var easiViewController : UIViewController = UIViewController()
   var easiWebView : UIWebView = UIWebView()
@@ -53,7 +47,7 @@ class ViewController: UIViewController {
   }
 
   @IBAction func settingsPressed(sender: AnyObject) {
-
+    // to do?
   }
 }
 

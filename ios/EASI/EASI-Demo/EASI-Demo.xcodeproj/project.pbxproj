@@ -286,6 +286,7 @@
 				25EDFBB11C1B37F800EAFFD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
