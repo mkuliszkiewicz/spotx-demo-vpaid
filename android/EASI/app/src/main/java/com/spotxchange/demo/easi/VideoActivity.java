@@ -26,6 +26,37 @@ public class VideoActivity extends AppCompatActivity {
         _view = loadInterstitial();
     }
 
+    @Override
+    protected void onPause () {
+        super.onPause();
+        if (null != _view) {
+            /*
+                From: http://developer.android.com/reference/android/webkit/WebView.html#onPause()
+
+                Pauses any extra processing associated with this WebView and its associated DOM,
+                plugins, JavaScript etc. For example, if this WebView is taken offscreen,
+                this could be called to reduce unnecessary CPU or network traffic.
+                When this WebView is again "active", call onResume().
+             */
+            _view.onPause();
+            _view.pauseTimers();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (null != _view) {
+            /*
+                Resumes a WebView after a previous call to onPause().
+             */
+            _view.onResume();
+            _view.resumeTimers();
+        }
+    }
+
+
     /**
      * Loads the EASI tag using the user input
      */
