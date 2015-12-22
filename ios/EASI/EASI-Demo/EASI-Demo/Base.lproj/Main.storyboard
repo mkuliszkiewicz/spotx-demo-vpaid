@@ -21,17 +21,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="bpk-xE-LTT">
                                 <rect key="frame" x="20" y="186" width="560" height="394"/>
                                 <color key="backgroundColor" red="0.9649818497474747" green="0.9649818497474747" blue="0.9649818497474747" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">data-spotx_channel_id="85394"
-data-spotx_content_width="300" 
-data-spotx_content_height="250"
-data-spotx_ad_unit="incontent"
-data-spotx_content_type="game"
-data-spotx_content_page_url="http://spotx.ninja"
-data-spotx_app_bundle="com.spotx.ios.easi"
-data-spotx_device_ifa="unknown"
-data-spotx_autoplay="1"
-data-spotx_content_container_id="player"
-data-spotx_video_slot_can_autoplay="1"</string>
                                 <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textView>
@@ -98,7 +87,7 @@ data-spotx_video_slot_can_autoplay="1"</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nkd-8w-ebU">
-                        <barButtonItem key="rightBarButtonItem" title="settings" id="jSU-SJ-LuY">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="settings" id="jSU-SJ-LuY">
                             <connections>
                                 <action selector="settingsPressed:" destination="BYZ-38-t0r" id="da8-Jt-De4"/>
                             </connections>
