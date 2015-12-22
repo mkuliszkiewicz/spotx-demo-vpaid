@@ -8,6 +8,10 @@ class ViewController: UIViewController {
 
   var easiViewController : UIViewController = UIViewController()
   var easiWebView : UIWebView = UIWebView()
+  var easiDelegate = EasiWebViewDelegate()
+
+  var visibleWidth:CGFloat = 0
+  var visibleHeight:CGFloat = 0
 
   @IBOutlet weak var scriptDataTextField: UITextView!
   @IBOutlet weak var buttonShowAd: UIButton!
@@ -17,6 +21,10 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     self.title = "EASI Tester"
     self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
+    visibleWidth = UIScreen.mainScreen().bounds.width
+    visibleHeight = UIScreen.mainScreen().bounds.height - (self.navigationController?.navigationBar.frame.size.height)! - UIApplication.sharedApplication().statusBarFrame.size.height
+
     self.scriptDataTextField.text = getDefaultScriptData()
   }
 
@@ -26,9 +34,12 @@ class ViewController: UIViewController {
 
   @IBAction func showAdButtonPressed(sender: AnyObject) {
     easiWebView.removeFromSuperview()
-    easiWebView = UIWebView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+    easiWebView = UIWebView(frame: CGRectMake(0, 0, visibleWidth, visibleHeight))
     easiWebView.allowsInlineMediaPlayback = true
     easiWebView.mediaPlaybackRequiresUserAction = false
+
+    easiDelegate = EasiWebViewDelegate()
+    easiWebView.delegate = easiDelegate
 
     let html = createHtml(urlTextField.text!, scriptData: scriptDataTextField.text)
     easiWebView.loadHTMLString(html, baseURL: NSURL(string: "http://search.spotxchange.com"))
@@ -49,9 +60,8 @@ class ViewController: UIViewController {
   }
 
   private func getDefaultScriptData() -> String {
-    let w = String(stringInterpolationSegment: UIScreen.mainScreen().bounds.width)
-    let h = String(stringInterpolationSegment: UIScreen.mainScreen().bounds.height)
-
+    let w = String(stringInterpolationSegment: visibleWidth)
+    let h = String(stringInterpolationSegment: visibleHeight)
     return String(format: "data-spotx_channel_id=\"85394\" \n" +
       "data-spotx_content_width=\"%@\" \n" +
       "data-spotx_content_height=\"%@\" \n" +
@@ -68,5 +78,28 @@ class ViewController: UIViewController {
   @IBAction func settingsPressed(sender: AnyObject) {
     // to do?
   }
+
 }
 
+
+class EasiWebViewDelegate: NSObject, UIWebViewDelegate {
+
+  var finishedLoading:Bool = false
+
+  func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    if(finishedLoading){
+      UIApplication.sharedApplication().openURL(request.URL!)
+      return false
+    }
+    return true
+  }
+
+  func webViewDidFinishLoad(webView: UIWebView) {
+    finishedLoading = true
+  }
+
+  func webViewDidStartLoad(webView: UIWebView) {
+    finishedLoading = false
+  }
+
+}
