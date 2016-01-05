@@ -1,17 +1,17 @@
 package com.spotxchange.demo.easi;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.spotxchange.demo.easi.dummy.DummyContent;
 
 /**
  * Copyright (C) 2015 SpotXchange
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements TestcaseListFragment.OnListFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,8 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
         getFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new MainFragment())
+                //.replace(R.id.fragment_container, new MainFragment())
+                .replace(R.id.fragment_container, new TestcaseListFragment())
                 .commit();
     }
 
@@ -41,4 +42,12 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onListFragmentInteraction(DummyContent.Testcase item) {
+        Intent adIntent = new Intent(this, VideoActivity.class);
+        adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        adIntent.putExtra(VideoActivity.EXTRA_SCRIPTDATA, item.scriptlet);
+        startActivity(adIntent);
+    }
 }

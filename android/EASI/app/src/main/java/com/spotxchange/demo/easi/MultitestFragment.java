@@ -15,29 +15,33 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
-    Button _showButton;
+public class MultitestFragment extends Fragment {
+    private static String ARG_SCRIPTLET = "scriptlet";
 
-    public MainFragment() {
+    public MultitestFragment() {
         // Required empty public constructor
     }
 
+    public static MultitestFragment newInstance(String scriptlet)
+    {
+        MultitestFragment f = new MultitestFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_SCRIPTLET, scriptlet);
+
+        f.setArguments(args);
+
+        return f;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+        View view = inflater.inflate(R.layout.fragment_multitest, container, false);
 
-        // Creates and shows an EASI interstitial when clicked.
-        _showButton = ((Button) view.findViewById(R.id.show_button));
-        _showButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MainFragment.this.launchVideoActivity(
-                    ((EditText) view.findViewById(R.id.target)).getText().toString()
-                    );
-            }
-        });
+        // Creates and shows an EASI interstitial immediately.
+        launchVideoActivity(
+            getArguments().getString(ARG_SCRIPTLET)
+            );
 
         return view;
     }
@@ -45,13 +49,9 @@ public class MainFragment extends Fragment {
     @Override
     public void onStart () {
         super.onStart();
-
-        // always enable the show button when the fragment initially becomes visible
-        _showButton.setEnabled(true);
     }
-    
+
     private void launchVideoActivity(String scriptlet) {
-        _showButton.setEnabled(false);
         Intent adIntent = new Intent(getActivity(), VideoActivity.class);
         adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

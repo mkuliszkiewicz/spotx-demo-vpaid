@@ -109,7 +109,6 @@ public class VideoActivity extends AppCompatActivity {
         //newView.loadUrl("http://search.spotxchange.com/test/ad/js/easi/EASI.html");
 
         Toast.makeText(VideoActivity.this, "Constructing EASI ad...", Toast.LENGTH_SHORT).show();
-
         return newView;
     }
 

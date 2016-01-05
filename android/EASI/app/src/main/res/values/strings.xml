@@ -3,7 +3,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="interstitial_ad_sample">EASI Ad Demo</string>
     <string name="show_ad">Show Ad</string>
 
     <string name="default_target"><![CDATA[
@@ -19,71 +18,33 @@
         data-spotx_content_container_id="player"
         data-spotx_video_slot_can_autoplay="1"
        ]]></string>
-    <string name="load_ad">Load ad</string>
     <string name="title_activity_video">VideoActivity</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_settings">Settings</string>
-
-    <!-- Strings related to Settings -->
-
-    <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
-
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
-        based on your message history
-    </string>
-
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
-    <string-array name="pref_example_list_titles">
-        <item>Always</item>
-        <item>When possible</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
-    <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
-
-    <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string-array name="pref_sync_frequency_titles">
-        <item>15 minutes</item>
-        <item>30 minutes</item>
-        <item>1 hour</item>
-        <item>3 hours</item>
-        <item>6 hours</item>
-        <item>Never</item>
-    </string-array>
-    <string-array name="pref_sync_frequency_values">
-        <item>15</item>
-        <item>30</item>
-        <item>60</item>
-        <item>180</item>
-        <item>360</item>
-        <item>-1</item>
-    </string-array>
-
-    <string name="pref_title_system_sync_settings">System sync settings</string>
-
-    <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
-
-    <string name="pref_title_new_message_notifications">New message notifications</string>
-
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
-
-    <string name="pref_title_vibrate">Vibrate</string>
     <string name="tag_url">tag_url</string>
     <string name="lock_orientation">lock_orientation</string>
     <string name="default_easi_url">http://search.spotxchange.com/js/spotx.js</string>
+
+    <string name="pict_output_sample">
+        <![CDATA[
+data-spotx_channel_id	data-spotx_ad_volume	data-spotx_loop	data-spotx_click_to_replay	data-spotx_unmute_on_mouse	data-spotx_collapse
+126302	100	1	1	0	0
+126302	50	1	1	1	1
+126303	100	1	1	1	1
+126113	0	0	0	0	1
+126301	50	1	1	1	0
+126113	50	0	0	1	0
+126303	0	1	1	1	0
+126301	0	1	1	0	1
+999999	0	0	1	1	0
+126303	50	1	1	0	1
+126301	100	1	1	0	1
+999999	50	1	0	0	1
+126113	100	1	0	0	0
+126302	0	1	1	0	0
+999999	100	0	1	0	0
+126113	100	1	1	1	0
+        ]]>
+    </string>
+    <string name="hello_blank_fragment">Launching test...</string>
+    <string name="tag_scriptlet">TEST_SCRIPTLET</string>
 </resources>
