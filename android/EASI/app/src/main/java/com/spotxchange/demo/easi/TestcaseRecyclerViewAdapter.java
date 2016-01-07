@@ -7,22 +7,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.spotxchange.demo.easi.TestcaseListFragment.OnListFragmentInteractionListener;
-import com.spotxchange.demo.easi.dummy.DummyContent.Testcase;
+import com.spotxchange.demo.easi.testcases.Testcase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link Testcase} and makes a call to the
  * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Testcase> mValues;
+    private final List<Testcase> mValues = new ArrayList<>();
     private final OnListFragmentInteractionListener mListener;
 
-    public TestcaseRecyclerViewAdapter(List<Testcase> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public TestcaseRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
     }
 
@@ -54,6 +53,14 @@ public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRe
     @Override
     public int getItemCount() {
         return mValues.size();
+    }
+
+    public void addTestcases(List<Testcase> newCases)
+    {
+        int currentPos = mValues.size();
+
+        mValues.addAll(newCases);
+        notifyItemRangeInserted(currentPos, newCases.size());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

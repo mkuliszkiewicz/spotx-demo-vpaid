@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.spotxchange.demo.easi.dummy.DummyContent;
+import com.spotxchange.demo.easi.testcases.Testcase;
 
 /**
  * Copyright (C) 2015 SpotXchange
@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements TestcaseListFragment.OnLis
     }
 
     @Override
-    public void onListFragmentInteraction(DummyContent.Testcase item) {
+    public void onListFragmentInteraction(Testcase item) {
         Intent adIntent = new Intent(this, VideoActivity.class);
         adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

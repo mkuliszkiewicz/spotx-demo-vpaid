@@ -47,4 +47,6 @@ data-spotx_channel_id	data-spotx_ad_volume	data-spotx_loop	data-spotx_click_to_r
     </string>
     <string name="hello_blank_fragment">Launching test...</string>
     <string name="tag_scriptlet">TEST_SCRIPTLET</string>
+    <string name="default_testcase_url">http://pastebin.com/raw/0NMYeFLz</string>
+    <string name="testcase_url">testcase_url</string>
 </resources>

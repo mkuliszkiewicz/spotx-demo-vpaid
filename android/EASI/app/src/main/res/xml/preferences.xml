@@ -3,8 +3,14 @@
     <EditTextPreference
         android:key="@string/tag_url"
         android:title="EASI Tag Url"
-        android:summary="The complete URL where easi.js is located"
+        android:summary="Complete URL where easi.js is located"
         android:defaultValue="@string/default_easi_url"
+        />
+    <EditTextPreference
+        android:key="@string/testcase_url"
+        android:title="Test Condition Source Url"
+        android:summary="Complete URL where Pict-style test cases are located"
+        android:defaultValue="@string/default_testcase_url"
         />
     <CheckBoxPreference
         android:key="@string/lock_orientation"

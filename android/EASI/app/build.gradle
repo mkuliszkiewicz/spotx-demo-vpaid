@@ -26,4 +26,8 @@ dependencies {
     compile 'com.android.support:design:22.2.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'com.android.support:recyclerview-v7:22.2.1'
+
+    // Volley mirror.
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+
 }
