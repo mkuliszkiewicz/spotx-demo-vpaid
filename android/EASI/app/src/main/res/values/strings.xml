@@ -49,4 +49,6 @@ data-spotx_channel_id	data-spotx_ad_volume	data-spotx_loop	data-spotx_click_to_r
     <string name="tag_scriptlet">TEST_SCRIPTLET</string>
     <string name="default_testcase_url">http://pastebin.com/raw/0NMYeFLz</string>
     <string name="testcase_url">testcase_url</string>
+    <string name="auto_pass">auto_pass</string>
+    <string name="headless">headless</string>
 </resources>

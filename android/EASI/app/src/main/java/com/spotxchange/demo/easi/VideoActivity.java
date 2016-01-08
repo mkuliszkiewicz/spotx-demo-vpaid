@@ -1,7 +1,6 @@
 package com.spotxchange.demo.easi;
 
 import android.annotation.TargetApi;
-import android.app.SharedElementCallback;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -12,11 +11,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import com.spotxchange.demo.easi.pixelmonitor.PixelMonitor;
+
 public class VideoActivity extends AppCompatActivity {
+    private final static String TAG = "VideoActivity";
     public final static String EXTRA_SCRIPTDATA = "SCRIPTDATA";
 
     // Current view.
     private WebView _view = null;
+    private PixelMonitor _pixelMonitor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class VideoActivity extends AppCompatActivity {
      */
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private WebView loadInterstitial() {
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String scriptTag = preferences.getString(
             getString(R.string.tag_url),
             getString(R.string.default_easi_url)
@@ -77,7 +80,7 @@ public class VideoActivity extends AppCompatActivity {
         }
 
         // Setup our WebView with a javascript interface
-        WebView newView = ((WebView) findViewById(R.id.interstitial));
+        final WebView newView = ((WebView) findViewById(R.id.interstitial));
         WebView.setWebContentsDebuggingEnabled(true);
         newView.getSettings().setJavaScriptEnabled(true);
         newView.getSettings().setMediaPlaybackRequiresUserGesture(false);
@@ -93,6 +96,29 @@ public class VideoActivity extends AppCompatActivity {
                 "utf8",
                 null
         );
+
+        // Monitor changes in pixel color
+        _pixelMonitor = new PixelMonitor(newView, new PixelMonitor.OnPixelChangedListener() {
+            @Override
+            public void onPixelChangedThreshold() {
+                Toast.makeText(_view.getContext(), "Pixel change threshold reached", Toast.LENGTH_SHORT).show();
+                if (preferences.getBoolean(getString(R.string.auto_pass), true))
+                {
+                    // TODO: Mark test passed.
+                    finish();
+                }
+            }
+
+            @Override
+            public void onPixelUnchangedThreshold() {
+                Toast.makeText(_view.getContext(), "Pixels remain unchanged after threshold", Toast.LENGTH_SHORT).show();
+                if (preferences.getBoolean(getString(R.string.auto_pass), true))
+                {
+                    // TODO: Mark test failed.
+                    finish();
+                }
+            }
+        });
 
         if (preferences.getBoolean( getString(R.string.lock_orientation), true)) {
             if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
@@ -112,6 +138,7 @@ public class VideoActivity extends AppCompatActivity {
         return newView;
     }
 
+
     /**
      * Evals the Javascript inside the WebView
      * @param javascript
@@ -124,4 +151,6 @@ public class VideoActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

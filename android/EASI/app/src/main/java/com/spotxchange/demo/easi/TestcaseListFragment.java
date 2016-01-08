@@ -32,7 +32,6 @@ import java.util.ArrayList;
  * interface.
  */
 public class TestcaseListFragment extends Fragment {
-    // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private TestcaseRecyclerViewAdapter adapter;
@@ -134,7 +133,6 @@ public class TestcaseListFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(Testcase item);
     }
 }

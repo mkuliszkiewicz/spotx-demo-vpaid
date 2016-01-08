@@ -17,4 +17,15 @@
         android:title="Lock orientation"
         android:defaultValue="true"
         />
+    <CheckBoxPreference
+        android:key="@string/auto_pass"
+        android:title="Automatically mark tests as pass / fail"
+        android:defaultValue="true"
+        />
+    <CheckBoxPreference
+        android:key="@string/headless"
+        android:title="Automatically run tests (Headless mode)"
+        android:defaultValue="true"
+        android:dependency="@string/auto_pass"
+        />
 </PreferenceScreen>
