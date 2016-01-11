@@ -137,7 +137,8 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == TEST_REQUEST_CODE) {
+        if (requestCode == TEST_REQUEST_CODE && (resultCode == Testcase.FAILED || resultCode == Testcase.PASSED))
+        {
             adapter.markTestCaseResult(data.getIntExtra(VideoActivity.EXTRA_TESTID, -1), resultCode);
         }
     }
