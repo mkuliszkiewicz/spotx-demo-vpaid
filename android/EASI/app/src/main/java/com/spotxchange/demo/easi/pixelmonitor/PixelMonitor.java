@@ -21,7 +21,7 @@ public class PixelMonitor {
      * @param view The view whose pixel color will be monitored
      */
     public PixelMonitor(View view, OnPixelChangedListener listener) {
-        this(view, listener, 5, 15);
+        this(view, listener, 5, 7);
     }
 
     /**

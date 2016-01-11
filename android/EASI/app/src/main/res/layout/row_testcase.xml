@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:layout_marginBottom="1dp"
     android:padding="5dip"
-    android:background="@color/background_material_light">
+    android:background="@color/neutral">
 
     <TextView
         android:id="@+id/id"

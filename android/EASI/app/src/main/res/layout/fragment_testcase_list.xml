@@ -9,6 +9,6 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".TestcaseListFragment"
+    tools:context=".testcase.TestcaseListFragment"
     tools:listitem="@layout/row_testcase"
     android:background="@color/background_material_dark" />

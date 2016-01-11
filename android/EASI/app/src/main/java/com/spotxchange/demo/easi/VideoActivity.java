@@ -12,10 +12,12 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.spotxchange.demo.easi.pixelmonitor.PixelMonitor;
+import com.spotxchange.demo.easi.testcase.Testcase;
 
 public class VideoActivity extends AppCompatActivity {
     private final static String TAG = "VideoActivity";
     public final static String EXTRA_SCRIPTDATA = "SCRIPTDATA";
+    public final static String EXTRA_TESTID = "TESTID";
 
     // Current view.
     private WebView _view = null;
@@ -66,15 +68,15 @@ public class VideoActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.KITKAT)
     private WebView loadInterstitial() {
         final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String scriptData;
         String scriptTag = preferences.getString(
             getString(R.string.tag_url),
             getString(R.string.default_easi_url)
             );
 
-        //String scriptTag = "http://search.spotxchange.com/js/spotx.js";
+        // Check for test case first, then scriptData
+        scriptData = getIntent().getStringExtra(EXTRA_SCRIPTDATA);
 
-        // load EASI with the script values given
-        String scriptData = getIntent().getStringExtra(VideoActivity.EXTRA_SCRIPTDATA);
         if (scriptData == null || scriptData.isEmpty()) {
             scriptData = getString(R.string.default_target);
         }
@@ -104,7 +106,7 @@ public class VideoActivity extends AppCompatActivity {
                 Toast.makeText(_view.getContext(), "Pixel change threshold reached", Toast.LENGTH_SHORT).show();
                 if (preferences.getBoolean(getString(R.string.auto_pass), true))
                 {
-                    // TODO: Mark test passed.
+                    setResult(Testcase.PASSED, getIntent());
                     finish();
                 }
             }
@@ -114,7 +116,7 @@ public class VideoActivity extends AppCompatActivity {
                 Toast.makeText(_view.getContext(), "Pixels remain unchanged after threshold", Toast.LENGTH_SHORT).show();
                 if (preferences.getBoolean(getString(R.string.auto_pass), true))
                 {
-                    // TODO: Mark test failed.
+                    setResult(Testcase.FAILED, getIntent());
                     finish();
                 }
             }

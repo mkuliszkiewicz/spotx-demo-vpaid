@@ -1,9 +1,9 @@
-package com.spotxchange.demo.easi;
+package com.spotxchange.demo.easi.testcase;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaRouter;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.preference.PreferenceManager;
@@ -15,23 +15,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.spotxchange.demo.easi.testcases.Testcase;
-
-import java.util.ArrayList;
-
+import com.spotxchange.demo.easi.R;
+import com.spotxchange.demo.easi.VideoActivity;
 /**
  * A fragment representing a list of Items.
  * <p>
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class TestcaseListFragment extends Fragment {
+public class TestcaseListFragment extends Fragment implements OnListFragmentInteractionListener {
+    private int TEST_REQUEST_CODE = 1300;
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private TestcaseRecyclerViewAdapter adapter;
@@ -75,12 +73,11 @@ public class TestcaseListFragment extends Fragment {
     }
 
     public void executeTestcaseRequest(final TestcaseRecyclerViewAdapter adapter) {
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String testcaseUrl = preferences.getString(
-                getString(R.string.testcase_url),
-                getString(R.string.default_testcase_url)
+        final String testcaseUrl = preferences.getString(
+            getString(R.string.testcase_url),
+            getString(R.string.default_testcase_url)
         );
 
         StringRequest stringRequest = new StringRequest(testcaseUrl,
@@ -88,7 +85,7 @@ public class TestcaseListFragment extends Fragment {
                     @Override
                     public void onResponse(String response) {
                         adapter.addTestcases(
-                            Testcase.parseTestcasesFromPictOutput(response)
+                                Testcase.parseTestcasesFromPictOutput(response)
                         );
                     }
                 },
@@ -101,6 +98,7 @@ public class TestcaseListFragment extends Fragment {
                 }
         );
 
+        RequestQueue queue = Volley.newRequestQueue(getActivity());
         queue.add(stringRequest);
     }
 
@@ -108,8 +106,8 @@ public class TestcaseListFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        if (activity instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) activity;
+        if (this instanceof OnListFragmentInteractionListener) {
+            mListener = (OnListFragmentInteractionListener) this;
         } else {
             throw new RuntimeException(activity.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -122,17 +120,27 @@ public class TestcaseListFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Testcase item);
+    @Override
+    public void onListFragmentInteraction(int position, Testcase item) {
+        Intent adIntent = new Intent(getActivity(), VideoActivity.class);
+
+        // Not flagging as new task because of a bug with onActivityResult getting called immediately:
+        // http://stackoverflow.com/questions/15687322/onactivityresult-being-called-instantly
+        //adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        adIntent.putExtra(VideoActivity.EXTRA_SCRIPTDATA, item.scriptlet);
+        adIntent.putExtra(VideoActivity.EXTRA_TESTID, position);
+        this.startActivityForResult(adIntent, TEST_REQUEST_CODE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == TEST_REQUEST_CODE) {
+            adapter.markTestCaseResult(data.getIntExtra(VideoActivity.EXTRA_TESTID, -1), resultCode);
+        }
     }
 }
+
+

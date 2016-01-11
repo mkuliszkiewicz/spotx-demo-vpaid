@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="successful">#FF66BB6A</color>
+    <color name="failed">#FFF44336</color>
+    <color name="neutral">@color/background_material_light</color>
+</resources>

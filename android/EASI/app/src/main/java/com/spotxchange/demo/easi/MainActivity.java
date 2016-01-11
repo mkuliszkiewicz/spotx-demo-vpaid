@@ -3,23 +3,26 @@ package com.spotxchange.demo.easi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.spotxchange.demo.easi.testcases.Testcase;
+import com.spotxchange.demo.easi.testcase.TestcaseListFragment;
 
 /**
  * Copyright (C) 2015 SpotXchange
  */
-public class MainActivity extends Activity implements TestcaseListFragment.OnListFragmentInteractionListener{
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        //TODO: Use build flag to determine if user input mode or headless
         getFragmentManager().beginTransaction()
-                //.replace(R.id.fragment_container, new MainFragment())
+                //.replace(R.id.fragment_container, new UserInputFragment())
                 .replace(R.id.fragment_container, new TestcaseListFragment())
                 .commit();
     }
@@ -40,14 +43,5 @@ public class MainActivity extends Activity implements TestcaseListFragment.OnLis
                     .commit();
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onListFragmentInteraction(Testcase item) {
-        Intent adIntent = new Intent(this, VideoActivity.class);
-        adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-        adIntent.putExtra(VideoActivity.EXTRA_SCRIPTDATA, item.scriptlet);
-        startActivity(adIntent);
     }
 }

@@ -1,4 +1,4 @@
-package com.spotxchange.demo.easi;
+package com.spotxchange.demo.easi.testcase;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.spotxchange.demo.easi.TestcaseListFragment.OnListFragmentInteractionListener;
-import com.spotxchange.demo.easi.testcases.Testcase;
+import com.spotxchange.demo.easi.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +17,11 @@ import java.util.List;
  */
 public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Testcase> mValues = new ArrayList<>();
-    private final OnListFragmentInteractionListener mListener;
+    private final List<Testcase> _values = new ArrayList<>();
+    private final OnListFragmentInteractionListener _listener;
 
     public TestcaseRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
-        mListener = listener;
+        _listener = listener;
     }
 
     @Override
@@ -33,18 +32,29 @@ public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRe
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+        holder.mItem = _values.get(position);
         holder.mIdView.setText(String.valueOf(position));
-        holder.mContentView.setText(mValues.get(position).scriptlet);
+        holder.mContentView.setText(_values.get(position).scriptlet);
+
+        if (_values.get(position).state == Testcase.PASSED)
+        {
+            holder.mContentView.setBackgroundResource(R.color.successful);
+        } else if (_values.get(position).state == Testcase.FAILED)
+        {
+            holder.mContentView.setBackgroundResource(R.color.failed);
+        }
+        else {
+            holder.mContentView.setBackgroundResource(R.color.neutral);
+        }
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
+                if (null != _listener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    _listener.onListFragmentInteraction(position, holder.mItem);
                 }
             }
         });
@@ -52,15 +62,21 @@ public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRe
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return _values.size();
     }
 
     public void addTestcases(List<Testcase> newCases)
     {
-        int currentPos = mValues.size();
+        int currentPos = _values.size();
 
-        mValues.addAll(newCases);
+        _values.addAll(newCases);
         notifyItemRangeInserted(currentPos, newCases.size());
+    }
+
+    public void markTestCaseResult(int position, int result)
+    {
+        _values.get(position).state = result;
+        notifyItemChanged(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
