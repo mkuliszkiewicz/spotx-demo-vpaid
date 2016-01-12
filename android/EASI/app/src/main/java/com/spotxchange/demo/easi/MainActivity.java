@@ -3,6 +3,8 @@ package com.spotxchange.demo.easi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +22,7 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        //TODO: Use build flag to determine if user input mode or headless
+        //TODO: Use build flag to determine if user input mode or headless by default
         getFragmentManager().beginTransaction()
                 //.replace(R.id.fragment_container, new UserInputFragment())
                 .replace(R.id.fragment_container, new TestcaseListFragment())

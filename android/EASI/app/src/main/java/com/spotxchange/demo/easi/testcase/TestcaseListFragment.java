@@ -6,10 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +33,6 @@ import com.spotxchange.demo.easi.VideoActivity;
 public class TestcaseListFragment extends Fragment implements OnListFragmentInteractionListener {
     private int TEST_REQUEST_CODE = 1300;
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
     private TestcaseRecyclerViewAdapter adapter;
 
     /**
@@ -44,10 +45,6 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-
-        }
     }
 
     @Override
@@ -64,7 +61,7 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new TestcaseRecyclerViewAdapter(mListener);
+            adapter = new TestcaseRecyclerViewAdapter(this);
             recyclerView.setAdapter(adapter);
 
             executeTestcaseRequest(adapter);
@@ -74,7 +71,7 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
 
     public void executeTestcaseRequest(final TestcaseRecyclerViewAdapter adapter) {
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        final SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         final String testcaseUrl = preferences.getString(
             getString(R.string.testcase_url),
             getString(R.string.default_testcase_url)
@@ -84,16 +81,27 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        adapter.addTestcases(
-                                Testcase.parseTestcasesFromPictOutput(response)
-                        );
+                        Activity activity = getActivity();
+                        if (activity != null && isAdded()) {
+                            adapter.addTestcases(
+                                    Testcase.parseTestcasesFromPictOutput(response)
+                            );
+
+                            if (preferences.getBoolean(getString(R.string.headless), true)) {
+                                // Automatically run first test
+                                spawnVideoActivity(0, adapter.getItem(0));
+                            }
+                        }
                     }
                 },
 
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getActivity(), "Failed to retrieve test conditions.", Toast.LENGTH_LONG).show();
+                        Activity activity = getActivity();
+                        if (activity != null && isAdded()) {
+                            Toast.makeText(getActivity(), "Failed to retrieve test conditions.", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
         );
@@ -102,26 +110,8 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
         queue.add(stringRequest);
     }
 
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (this instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) this;
-        } else {
-            throw new RuntimeException(activity.toString()
-                    + " must implement OnListFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    @Override
-    public void onListFragmentInteraction(int position, Testcase item) {
+    private void spawnVideoActivity(int testcaseId, Testcase item)
+    {
         Intent adIntent = new Intent(getActivity(), VideoActivity.class);
 
         // Not flagging as new task because of a bug with onActivityResult getting called immediately:
@@ -129,8 +119,24 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
         //adIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         adIntent.putExtra(VideoActivity.EXTRA_SCRIPTDATA, item.scriptlet);
-        adIntent.putExtra(VideoActivity.EXTRA_TESTID, position);
+        adIntent.putExtra(VideoActivity.EXTRA_TESTID, testcaseId);
         this.startActivityForResult(adIntent, TEST_REQUEST_CODE);
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
+    public void onListFragmentInteraction(int position, Testcase item) {
+        spawnVideoActivity(position, item);
     }
 
     @Override
@@ -139,8 +145,30 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
 
         if (requestCode == TEST_REQUEST_CODE && (resultCode == Testcase.FAILED || resultCode == Testcase.PASSED))
         {
-            adapter.markTestCaseResult(data.getIntExtra(VideoActivity.EXTRA_TESTID, -1), resultCode);
+            final int position = data.getIntExtra(VideoActivity.EXTRA_TESTID, -1);
+            adapter.markTestCaseResult(position, resultCode);
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+
+            if (preferences.getBoolean(getString(R.string.headless), true))
+            {
+                // Automatically run next test (if the previous test completed)
+                if (position + 1 < adapter.getItemCount()) {
+                    //spawnVideoActivity(position + 1, adapter.getItem(position));
+
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            spawnVideoActivity(position + 1, adapter.getItem(position));
+                        }
+                    }, 200);
+                }
+            }
         }
+
+
     }
 }
 

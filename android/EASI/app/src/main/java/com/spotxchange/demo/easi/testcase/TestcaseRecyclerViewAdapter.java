@@ -79,6 +79,10 @@ public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRe
         notifyItemChanged(position);
     }
 
+    public Testcase getItem(int position) {
+        return _values.get(position);
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;

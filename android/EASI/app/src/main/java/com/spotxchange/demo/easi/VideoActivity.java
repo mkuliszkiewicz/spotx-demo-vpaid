@@ -1,20 +1,20 @@
 package com.spotxchange.demo.easi;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.spotxchange.demo.easi.pixelmonitor.PixelMonitor;
 import com.spotxchange.demo.easi.testcase.Testcase;
 
-public class VideoActivity extends AppCompatActivity {
+public class VideoActivity extends Activity {
     private final static String TAG = "VideoActivity";
     public final static String EXTRA_SCRIPTDATA = "SCRIPTDATA";
     public final static String EXTRA_TESTID = "TESTID";
