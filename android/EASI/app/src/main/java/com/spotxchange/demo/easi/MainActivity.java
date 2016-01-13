@@ -2,7 +2,9 @@ package com.spotxchange.demo.easi;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,9 +22,30 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Check if has intent (i.e. launched from command line or headless app tool
+
+        Log.d("Main", "launching activity");
+        if (getIntent().getExtras() != null) {
+            Log.d("Main", String.format("got extras %1$s", getIntent().getExtras().getBoolean(getString(R.string.headless), false)));
+            SharedPreferences.Editor preferencesEditor = PreferenceManager.getDefaultSharedPreferences(this).edit();
+            if (getIntent().getExtras().getBoolean(getString(R.string.headless), false)) {
+                Log.d("Main", "got headless");
+                preferencesEditor
+                        .putBoolean(getString(R.string.headless), true);
+            }
+
+            String webhook = getIntent().getExtras().getString(getString(R.string.results_webhook), "");
+            if (!webhook.isEmpty()) {
+                preferencesEditor
+                        .putString(getString(R.string.results_webhook), webhook);
+            }
+
+            preferencesEditor.apply();
+        }
+
+
         setContentView(R.layout.activity_main);
 
-        //TODO: Use build flag to determine if user input mode or headless by default
         getFragmentManager().beginTransaction()
                 //.replace(R.id.fragment_container, new UserInputFragment())
                 .replace(R.id.fragment_container, new TestcaseListFragment())

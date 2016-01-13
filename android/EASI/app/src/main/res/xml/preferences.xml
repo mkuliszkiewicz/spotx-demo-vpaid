@@ -12,6 +12,12 @@
         android:summary="Complete URL where Pict-style test cases are located"
         android:defaultValue="@string/default_testcase_url"
         />
+    <EditTextPreference
+        android:key="@string/results_webhook"
+        android:title="Test Result Webhook Url"
+        android:summary="Complete URL where test results will be posted"
+        android:defaultValue="@string/default_testcase_url"
+        />
     <CheckBoxPreference
         android:key="@string/lock_orientation"
         android:title="Lock orientation"
@@ -25,7 +31,7 @@
     <CheckBoxPreference
         android:key="@string/headless"
         android:title="Automatically run tests (Headless mode)"
-        android:defaultValue="true"
+        android:defaultValue="false"
         android:dependency="@string/auto_pass"
         />
 </PreferenceScreen>

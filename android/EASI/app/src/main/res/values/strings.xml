@@ -51,4 +51,5 @@ data-spotx_channel_id	data-spotx_ad_volume	data-spotx_loop	data-spotx_click_to_r
     <string name="testcase_url">testcase_url</string>
     <string name="auto_pass">auto_pass</string>
     <string name="headless">headless</string>
+    <string name="results_webhook">results_webhook</string>
 </resources>
