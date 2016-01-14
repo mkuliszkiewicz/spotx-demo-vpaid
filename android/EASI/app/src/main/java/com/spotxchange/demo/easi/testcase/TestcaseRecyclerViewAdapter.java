@@ -83,6 +83,10 @@ public class TestcaseRecyclerViewAdapter extends RecyclerView.Adapter<TestcaseRe
         return _values.get(position);
     }
 
+    public List<Testcase> getItems() {
+        return _values;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;

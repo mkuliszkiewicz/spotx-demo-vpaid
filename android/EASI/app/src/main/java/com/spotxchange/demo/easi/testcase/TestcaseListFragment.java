@@ -24,6 +24,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.spotxchange.demo.easi.R;
 import com.spotxchange.demo.easi.VideoActivity;
+
+import java.util.List;
+
 /**
  * A fragment representing a list of Items.
  * <p>
@@ -34,6 +37,7 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
     private int TEST_REQUEST_CODE = 1300;
     private int mColumnCount = 1;
     private TestcaseRecyclerViewAdapter adapter;
+    private OnTestsCompleteListener _completeListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -127,6 +131,13 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+
+        try {
+            _completeListener = (OnTestsCompleteListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
     }
 
     @Override
@@ -165,10 +176,16 @@ public class TestcaseListFragment extends Fragment implements OnListFragmentInte
                         }
                     }, 200);
                 }
+                else
+                {
+                    _completeListener.onTestsComplete(adapter.getItems());
+                }
             }
         }
+    }
 
-
+    public interface OnTestsCompleteListener {
+        public void onTestsComplete(List<Testcase> results);
     }
 }
 
