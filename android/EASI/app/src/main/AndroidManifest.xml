@@ -24,6 +24,7 @@
         <activity
             android:name=".VideoActivity"
             android:label="@string/title_activity_video"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

@@ -28,7 +28,9 @@ public class VideoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
-        _view = loadInterstitial();
+        if (savedInstanceState == null) {
+            _view = loadInterstitial();
+        }
     }
 
     @Override
