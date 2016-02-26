@@ -73,16 +73,28 @@ public class MainActivity extends Activity {
             public void onSuccessResponse(String response) {
                 Log.d("VASTResponseHandler", response);
                 final VPAIDResponse vpaidResponse = VASTParser.read(new InputSource(new StringReader(response)));
-                Log.d("VASTResponseHandler", vpaidResponse.mediaUrl);
-                Log.d("VASTResponseHandler", vpaidResponse.adParameters);
-
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // yay, successful VAST response, now load it
-                        readyVpaidResponse(vpaidResponse);
-                    }
-                });
+                
+                if(vpaidResponse == null){
+                    // VAST was response was empty
+                    Log.d("VASTResponseHandler", "Received invalid VAST or XML!");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MainActivity.this, "Error: Invalid VAST or XML.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                else {
+                    Log.d("VASTResponseHandler", vpaidResponse.mediaUrl);
+                    Log.d("VASTResponseHandler", vpaidResponse.adParameters);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            // yay, successful VAST response, now load it
+                            readyVpaidResponse(vpaidResponse);
+                        }
+                    });
+                }
             }
 
             @Override
